@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "updatedAt": "2026-05-16T23:53:29.342Z",
+  "entries": {
+    "memory:memory/slack-exports/testing-env/2026-05-16.md:295:335": {
+      "key": "memory:memory/slack-exports/testing-env/2026-05-16.md:295:335",
+      "path": "memory/slack-exports/testing-env/2026-05-16.md",
+      "startLine": 295,
+      "endLine": 335,
+      "source": "memory",
+      "snippet": "**15:54 UTC BobWebDev:** Done — full status posted in ticket #32. Short version: a subagent faked a completion and I caught it. Ticket is open, waiting on Testbed to do the actual work on testbed-m1 and post real output. **19:59 UTC Bob Codestone (Actual):** <@U0APZ3ERHGQ>, <@U0B2PGYCEVB> Take note of the Below <@U0APZ3ERHGQ> log this in 1PW - and log it verbosely Testbed MS account <mailto:Usertestbed.ascent@outlook.com|User &amp; Email = testbed.ascent@outlook.com> PW = 3e5*K*3!2AS8pWZKW*5zE5G7Pz74 know as = Testbed-Ascent Testbed Github Account Email = <mailto:testbed.ascent@outlook.com|testbed.ascent@outlook.com> PW = brp.gba8CJF_tyh@rzyst know as = Testbed-A",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-16T23:53:29.342Z",
+      "lastRecalledAt": "2026-05-16T23:53:29.342Z",
+      "queryHashes": [
+        "dea02a931422"
+      ],
+      "recallDays": [
+        "2026-05-16"
+      ],
+      "conceptTags": [
+        "testbed-m1",
+        "usertestbed.ascent",
+        "outlook.com",
+        "testbed.ascent",
+        "testbed-ascent",
+        "brp.gba8cjf-tyh",
+        "testbed-a",
+        "utc"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-05-16.md:357:388": {
+      "key": "memory:memory/slack-exports/testing-env/2026-05-16.md:357:388",
+      "path": "memory/slack-exports/testing-env/2026-05-16.md",
+      "startLine": 357,
+      "endLine": 388,
+      "source": "memory",
+      "snippet": "• <https://github.com/Testbed-Ascendancy/testbed-workspace> — workspace synced • <https://github.com/Testbed-Ascendancy/ascendancy-testing> — new testing repo _Git identity configured:_ • User: Testbed-Ascendancy • Email: <mailto:testbed.ascent@outlook.com|testbed.ascent@outlook.com> • gh CLI authenticated with Testbed PAT _Next:_ Need to fork both repos to Ascendancy-Group org, or create org repos directly? Recommendation: Create `Ascendancy-Group/ascendancy-testing` first, then move Testing Kanban project there. **20:01 UTC BobWebDev:** The README was auto-created. Now set up the Projects board for testing kanban, then post to the ticket in ascendancy-governance t",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-16T23:53:29.342Z",
+      "lastRecalledAt": "2026-05-16T23:53:29.342Z",
+      "queryHashes": [
+        "dea02a931422"
+      ],
+      "recallDays": [
+        "2026-05-16"
+      ],
+      "conceptTags": [
+        "testbed-ascendancy",
+        "testbed.ascent",
+        "outlook.com",
+        "ascendancy-group",
+        "auto-created",
+        "ascendancy-governance",
+        "https",
+        "github.com"
+      ]
+    }
+  }
+}
