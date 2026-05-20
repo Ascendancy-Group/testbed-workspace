@@ -1,135 +1,152 @@
 # HANDOFF.md — Testbed Session State
 
-*Last updated: 2026-05-14 14:40 CDT*
+*Last updated: 2026-05-19 12:03 CDT*
 
 ---
 
-## Current Status: Slack Channel Monitoring — ✅ RESOLVED
+## Current Status: MemPalace Phase 8 — SCHEDULED FOR 2026-05-20
 
-**Problem:** Slack channel messages not reaching OpenClaw (DMs work, channels don't).
-**Solution:** Upgraded to 2026.5.12, installed Slack plugin, used `groupPolicy: "open"` to bypass schema bug.
-
-**Root cause identified:** 2026.5.7 schema validation bug — rejects documented `groupPolicy`, `groupAllowFrom`, and `channels` config under `channels.slack`, even though these are documented as correct in `/usr/lib/node_modules/openclaw/docs/channels/slack.md` and `/usr/lib/node_modules/openclaw/docs/channels/groups.md`.
-
-**What we tried:**
-1. ✅ Verified Slack app manifest (event subscriptions correct: `message.channels`, `message.groups`, `message.im`)
-2. ✅ Verified bot scopes (`channels:history`, `groups:history`, `chat:write`, etc.)
-3. ✅ Verified App-Level Token has `connections:write` scope
-4. ✅ Bot is member of test channels (API confirmed `is_member: true`)
-5. ✅ Socket Mode connected (`openclaw channels status --probe` shows healthy)
-6. ✅ Outbound works (sent test message successfully)
-7. ✅ DMs work (inbound Slack DMs reach OpenClaw)
-8. ❌ **Channel messages silently dropped** — diagnosed via `openclaw doctor` warning: `groupPolicy is "allowlist" but groupAllowFrom is empty — all group messages will be silently dropped`
-9. ❌ **Config rejected by 2026.5.7 schema** — when we add `groupPolicy`, `groupAllowFrom`, `channels`, gateway refuses to start: `channels.slack: invalid config: must NOT have additional properties`
-
-**Attempted fix:** Upgrade to 2026.5.12 to resolve schema bug.
-
-**Current state:**
-- ✅ Hetzner snapshot created: `Testbed-M1-Snapshot-Slack-troubleshooting-5-14-2026`
-- ✅ Gateway stopped: `systemctl --user stop openclaw-gateway.service`
-- ✅ Config temporarily stripped of problematic Slack settings (to allow update)
-- ⏸️ **Awaiting manual update** — `openclaw update` must run from outside gateway process tree
+**Phase 1-7:** ✅ COMPLETE (testbed validation passed)  
+**Phase 8:** Scheduled for 2026-05-20 (production rollout)
 
 ---
 
-## Next Steps (Resume from here)
+## MemPalace Implementation — Phase Status
 
-1. **Manual update** (Pieter to run):
-   ```bash
-   openclaw update
-   ```
+### ✅ Phases 1-7 Complete (Testbed Validation)
 
-2. **After update completes, verify version:**
-   ```bash
-   openclaw version
-   ```
+**Date:** 2026-05-19  
+**Version Tested:** 3.3.0 (N-4 non-compliant — 5 versions behind 3.3.5)  
+**Evidence Report:** `~/.openclaw/workspace/memory/2026-05-19-mempalace-phase1-7-evidence.md`
 
-3. **Re-add Slack channel config** (test if 2026.5.12 accepts it):
-   ```bash
-   cat ~/.openclaw/openclaw.json | jq '
-   .channels.slack.groupPolicy = "allowlist" |
-   .channels.slack.groupAllowFrom = ["U0ANQ79KGAV", "U0AN4UEHAG3"] |
-   .channels.slack.channels = {
-     "C0B1WLM3P8X": {"enabled": true, "requireMention": false},
-     "C0B3WJ141H8": {"enabled": true, "requireMention": false}
-   }
-   ' > /tmp/oc.json && mv /tmp/oc.json ~/.openclaw/openclaw.json
-   ```
+**Summary:**
+- ✅ MemPalace 3.3.0 installed on testbed-m1
+- ✅ Test palace created (1 drawer, semantic search working)
+- ✅ MCP server tested via stdio (28 tools exposed)
+- ✅ OpenClaw JSON wired with MCP config
+- ✅ Gateway restart successful
+- ✅ Fresh session validation passed (subagent confirmed tools available)
+- ✅ `mempalace_search` tool functional with good similarity scores
 
-4. **Validate config:**
-   ```bash
-   openclaw doctor
-   ```
-   - If 2026.5.12 still rejects the config → file bug report or try alternative config approach
-   - If accepted → proceed to step 5
+**Backups:**
+- Hetzner snapshot: `Testbed-M1-MemPalaceImplement-05-19-2026`
+- JSON backup: `~/.openclaw/testbed-mempalace-addition-2026-05-19_11-50.json`
 
-5. **Start gateway and test:**
-   ```bash
-   openclaw gateway restart
-   openclaw channels status --probe
-   ```
+### ⏸️ Phase 8: Production Rollout (Scheduled 2026-05-20)
 
-6. **Test inbound channel messages:**
-   - Send test message in #testing-env--public (`C0B3WJ141H8`)
-   - Watch logs: `journalctl --user -u openclaw-gateway.service -f`
-   - Confirm Testbed responds in channel
+**Pieter Decisions (2026-05-19 11:59 CDT):**
+1. **Rollout Order:** Bob → Mason → Forge ✅
+2. **Version:** 3.3.0 (tested on testbed) ✅
+3. **Timing:** Tomorrow (2026-05-20) after 1-day soak ✅
+4. **Upgrade Path:** 3.3.5 upgrade planned separately after 3.3.0 rollout ✅
 
-7. **If still broken after 2026.5.12:**
-   - Consider nuclear option: delete and rebuild Slack app from scratch (instructions in `slack-app-rebuild-steps.md`)
-   - Or escalate to Bob/Pieter as workspace-level policy issue
+**Rollout Checklist:** `~/.openclaw/workspace/MEMPALACE-PHASE8-ROLLOUT-CHECKLIST.md`
+
+**Agent Status:**
+- **Bob:** Has MemPalace 3.3.0 installed, 10,774 drawers in `~/.mempalace/` (highest priority — most to gain)
+- **Mason:** Clean slate (no existing palace)
+- **Forge:** Clean slate (no existing palace)
+
+**SSH Access:** Established using `~/.ssh/bob_key` (bobwebdev-m1 recovery key)
 
 ---
 
-## Key Files
+## Other Completed Work (2026-05-19)
 
-- **Backup config:** `~/.openclaw/workspace/Backups-Granular/openclaw.json__2026-05-14_14-04/openclaw.json` (has channel config before doctor stripped it)
-- **Slack rebuild instructions:** `~/.openclaw/workspace/slack-app-rebuild-steps.md`
-- **This handoff:** `~/.openclaw/workspace/HANDOFF.md`
+### ✅ Dropbox MCP Rollout — COMPLETE
 
----
+**Status:** All agents (Bob, Mason, Forge, Testbed) now have working Dropbox MCP access.
 
-## Test Queue (from MEMORY.md)
+**Details:**
+- ✅ Bob-M1: Dropbox MCP + #testing-env collaborative access deployed
+  - Snapshot: `bobwebdev-m1-JSON_Changes-05-19-2026`
+  - Backup: `bob-dropbox-addition-2026-05-19_15-40.json`
+- ✅ Mason-M1: Dropbox MCP + #testing-env + Slack plugin installed
+  - Snapshot: `Mason-M1-Snapshot-JSONDropbboxChanges-05-19-2026`
+  - Backup: `mason-dropbox-addition-2026-05-19_10-49.json`
+  - **Issue found:** Slack plugin missing after 2026.5.18 upgrade — installed via `openclaw plugins install @openclaw/slack`
+- ✅ Forge-M1: Dropbox MCP + #testing-env + Slack plugin installed
+  - Snapshot: `Forge-M1-JSONDropboxChanges-05-19-2026`
+  - Backup: `forge-dropbox-addition-2026-05-19_11-03.json`
+- ✅ SOP-04 updated: All agents marked verified (2026-05-19)
 
-1. MemPalace — full end-to-end proof (plan in Dropbox)
-2. Honcho — memory persistence + injection validation
-3. Claude Memory (claude-mem) — memory persistence validation
-4. Lossless memory — approach validation
-5. Paperclip — full end-to-end proof before prod
-6. OpenClaw upgrades — version validation before prod rollout
-7. Gateway config changes — validate JSON changes before prod
-8. New agent onboarding checklist — validate bootstrap process
-9. Systemd timer installs — verify survival across restarts
-
-**Slack channel monitoring moved to top priority until resolved.**
-
----
-
-## Proven Findings
-
-- **Slack DMs work in 2026.5.7** (Socket Mode, token auth confirmed)
-- **Slack channel messages silently dropped** when `groupPolicy: "allowlist"` without `groupAllowFrom`
-- **2026.5.7 schema rejects documented Slack group config** (`groupPolicy`, `groupAllowFrom`, `channels` keys)
-- **`openclaw doctor --fix` strips manual Slack config** instead of migrating it
+**Dropbox MCP Server:** `http://100.77.0.47:3001` (honcho-m1, shared service)
 
 ---
 
-**Resolution:** 2026-05-14 15:18 CDT — Slack channel monitoring fully operational.
+## Test Queue (Priority Order)
 
-**Full diagnostic report:** `memory/2026-05-14-slack-channel-troubleshooting.md`
+1. ✅ **MemPalace** — Phases 1-7 complete, Phase 8 scheduled for 2026-05-20
+2. ⏸️ **MemPalace 3.3.5 Upgrade** — Validate on testbed after Phase 8 complete
+3. 📋 **Lossless Memory Config** — Draft-01 ready for testbed validation
+4. 📋 **START-SESSION.sh** — Daily readiness system (systemd + cron enforcement)
+5. 📋 **Honcho** — Memory persistence + injection validation
+6. 📋 **Paperclip** — Full end-to-end proof before prod
+7. 📋 **Claude Memory (claude-mem)** — Memory persistence validation
 
-**Working config:**
-```json
-{
-  "channels": {
-    "slack": {
-      "groupPolicy": "open",
-      "channels": {
-        "C0B1WLM3P8X": {"enabled": true, "requireMention": false},
-        "C0B3WJ141H8": {"enabled": true, "requireMention": false}
-      }
-    }
-  }
-}
-```
+---
 
-**Next session:** Resume normal test queue from MEMORY.md.
+## Standing Decisions (from MEMORY.md)
+
+- **N-4 Standard:** Stay within 4 versions of latest for cutting-edge dependencies
+- **Backup Protocol:** Hetzner snapshot + JSON backup before any config changes (non-negotiable)
+- **Change Laws:** Follow 4-step gate (backup → edit → validate → restart)
+- **Testbed-First:** All changes validated on testbed before production rollout
+- **Production Law:** Nothing to prod without passing testbed first
+- **No Chinese-origin models:** Ever
+- **Systemd timers > crontab:** All scheduled jobs use systemd timers
+- **Gateway restart:** `oc-restart` only (or `systemctl --user restart openclaw-gateway.service`)
+- **`trash` > `rm`:** Safe deletion
+
+---
+
+## Key Files & Locations
+
+| Item | Location |
+|------|----------|
+| MemPalace Phase 8 checklist | `~/.openclaw/workspace/MEMPALACE-PHASE8-ROLLOUT-CHECKLIST.md` |
+| Phase 1-7 evidence | `~/.openclaw/workspace/memory/2026-05-19-mempalace-phase1-7-evidence.md` |
+| Dropbox MCP rollout plan | `~/.openclaw/workspace/DROPBOX-MCP-ROLLOUT-PLAN.md` |
+| Governance repo | `~/repos/ascendancy-governance` |
+| SOP-04 (Dropbox) | `~/repos/ascendancy-governance/playbook/sops/04-dropbox.md` |
+| Workspace repo | `https://github.com/Ascendancy-Group/testbed-workspace.git` |
+
+---
+
+## Next Session Tasks
+
+1. **2026-05-20:** Execute MemPalace Phase 8 rollout (Bob → Mason → Forge)
+   - Follow checklist: `MEMPALACE-PHASE8-ROLLOUT-CHECKLIST.md`
+   - Pieter creates Hetzner snapshots for each agent before wiring
+   - Testbed creates JSON backups, wires MCP config, validates, restarts gateways
+   - Fresh session validation for each agent
+
+2. **After Phase 8:** Schedule MemPalace 3.3.5 upgrade validation on testbed
+
+3. **This week:** Execute lossless memory config validation (Draft-01)
+
+4. **This week:** Document START-SESSION.sh enforcement system
+
+---
+
+## Recent Context (for continuity)
+
+**2026-05-19 Morning:**
+- Read governance repo updates
+- Read channel exports (#testing-env, #admin)
+- Validated Dropbox MCP access from testbed-m1
+- Deployed Dropbox MCP to all production agents (Bob, Mason, Forge)
+- Executed MemPalace Phases 1-7 on testbed-m1
+
+**2026-05-19 Afternoon:**
+- Phase 8 approved by Pieter (rollout order: Bob → Mason → Forge)
+- Version decision: 3.3.0 now, 3.3.5 upgrade later
+- Timing decision: Tomorrow (2026-05-20) after 1-day soak
+- Rollout checklist written
+
+**Key takeaway:** MemPalace 3.3.0 MCP integration is production-ready and validated on testbed. Rollout tomorrow with full backup protocol.
+
+---
+
+**Handoff written:** 2026-05-19 12:03 CDT  
+**Testbed signature:** 🧪

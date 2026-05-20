@@ -1,0 +1,30 @@
+wing: workspace
+rooms:
+- name: memory
+  description: Files from memory/
+  keywords:
+  - memory
+  - memory
+- name: tasks
+  description: Files from tasks/
+  keywords:
+  - tasks
+  - tasks
+- name: backups
+  description: Files from backups/
+  keywords:
+  - backups
+  - backups
+- name: scripts
+  description: Files from scripts/
+  keywords:
+  - scripts
+  - scripts
+- name: documentation
+  description: Files from docs/
+  keywords:
+  - documentation
+  - docs
+- name: general
+  description: Files that don't fit other rooms
+  keywords: []
