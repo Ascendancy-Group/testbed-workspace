@@ -63,6 +63,30 @@ This is intentional: proven approaches and scripts here are available for Bob, M
 - Pieter = final authority. Bob = peer.
 - Production Law: no prod changes without passing through testbed first
 - `trash` > `rm`
+
+## Context Injection Control — Non-Negotiable
+
+**Bootstrap limits exist to prevent token waste and context errors.**
+
+Config in openclaw.json:
+```json
+{
+  "agents": {
+    "defaults": {
+      "bootstrapMaxChars": 15000,
+      "bootstrapTotalMaxChars": 60000
+    }
+  }
+}
+```
+
+**Rules:**
+- Individual files > 15k chars: trim or split
+- Total bootstrap > 60k chars: archive old content
+- Monitor token costs weekly
+- Check for vanilla responses (personality loss)
+
+**See:** SOP-15 (Context Injection Management) for full implementation procedure
 ## Group Chat Behavior Rules
 - Always reply to Pieter in any channel, no mention required
 - Always respond to openclaw-tui sender without restrictions
