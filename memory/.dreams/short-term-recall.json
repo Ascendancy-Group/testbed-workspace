@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-19T15:37:42.676Z",
+  "updatedAt": "2026-05-26T23:35:14.244Z",
   "entries": {
     "memory:memory/slack-exports/testing-env/2026-05-16.md:295:335": {
       "key": "memory:memory/slack-exports/testing-env/2026-05-16.md:295:335",
@@ -102,18 +102,20 @@
       "endLine": 95,
       "source": "memory",
       "snippet": "Pieter asked about using GH Discussions for test coordination. **Proposed structure:** - **Issues** = actionable test tickets (poller-friendly) - **Discussions** = architecture questions, design decisions, pre-work debates **Benefit:** Keeps Issues clean with clear pass/fail criteria while Discussions capture decision-making process. ## Workflow Achievements Today 1. ✅ Testbed GitHub identity established 2. ✅ Workspace synced to org repo (secrets cleaned) 3. ✅ Dedicated testing repo created 4. ✅ Kanban polling proven to work (3+ hour uptime) 5. ✅ Auto-pickup workflow demonstrated 6. ✅ First real test completed (TEST-02 #3) — MemPalace validation passed 7. ✅ Full test cycle proven: assignm",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1,
+      "totalScore": 2,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-17T20:06:09.038Z",
-      "lastRecalledAt": "2026-05-17T20:06:09.038Z",
+      "lastRecalledAt": "2026-05-26T21:49:17.113Z",
       "queryHashes": [
-        "19b8599dd5ee"
+        "19b8599dd5ee",
+        "8656a4ee9333"
       ],
       "recallDays": [
-        "2026-05-17"
+        "2026-05-17",
+        "2026-05-26"
       ],
       "conceptTags": [
         "poller-friendly",
@@ -465,6 +467,195 @@
         "mempalace",
         "foundational",
         "honcho"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-05-18.md:1065:1096": {
+      "key": "memory:memory/slack-exports/testing-env/2026-05-18.md:1065:1096",
+      "path": "memory/slack-exports/testing-env/2026-05-18.md",
+      "startLine": 1065,
+      "endLine": 1096,
+      "source": "memory",
+      "snippet": "**18:15 UTC BobWebDev:** Got it. Field is `credential`. **18:16 UTC BobWebDev:** Token confirmed in 1PW as `Service Account Auth Token: Testbed` — field: `credential`. One potential blocker: if `op` CLI on testbed-m1 isn't configured yet, it's a chicken-and-egg — needs the token set before it can read the token. _Pieter_ — is `OP_SERVICE_ACCOUNT_TOKEN` already set on testbed-m1 from before, or does it need to be bootstrapped fresh? If fresh, the new token value needs to get onto testbed-m1 via SSH or systemd — just not in chat. Testbed — ticket is updated with your full step sequence. Standing by. **18:17 UTC Pieter van der Wal:** <@U0APZ3ERHGQ> i don't know confirm via ti",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-26T21:49:11.786Z",
+      "lastRecalledAt": "2026-05-26T21:49:11.786Z",
+      "queryHashes": [
+        "058585d860b4"
+      ],
+      "recallDays": [
+        "2026-05-26"
+      ],
+      "conceptTags": [
+        "testbed-m1",
+        "chicken-and-egg",
+        "op-service-account-token",
+        "utc",
+        "bobwebdev",
+        "got",
+        "field",
+        "credential"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-05-17.md:57:101": {
+      "key": "memory:memory/slack-exports/testing-env/2026-05-17.md:57:101",
+      "path": "memory/slack-exports/testing-env/2026-05-17.md",
+      "startLine": 57,
+      "endLine": 101,
+      "source": "memory",
+      "snippet": "• Cost management (free polling, paid work) • Proven outcomes (TEST-01, TEST-02) • Scaling to app dev, web dev, Azure, security testing *Link:* <https://github.com/Ascendancy-Group/testbed-workspace/blob/main/docs/KANBAN-WORKFLOW.md> This is the method for all future work: infrastructure, app dev, web dev, Azure, security. **11:31 UTC BobWebDev:** :file_cabinet: MemPalace harvest complete — 603 messages mined from this channel (2026-05-17 11:31 UTC) **17:17 UTC Pieter van der Wal:** <@U0B2PGYCEVB> , <@U0APZ3ERHGQ> Morning What's our status with MemPalace testing Is it successful for both of you **17:17 UTC BobWebDev:** Morning Pieter — I'm Bob (the AI), not one of th",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-26T21:49:11.786Z",
+      "lastRecalledAt": "2026-05-26T21:49:11.786Z",
+      "queryHashes": [
+        "058585d860b4"
+      ],
+      "recallDays": [
+        "2026-05-26"
+      ],
+      "conceptTags": [
+        "test-01",
+        "test-02",
+        "file-cabinet",
+        "cost",
+        "management",
+        "free",
+        "polling",
+        "paid"
+      ]
+    },
+    "memory:memory/2026-05-26-SQL-01-audit.md:37:80": {
+      "key": "memory:memory/2026-05-26-SQL-01-audit.md:37:80",
+      "path": "memory/2026-05-26-SQL-01-audit.md",
+      "startLine": 37,
+      "endLine": 80,
+      "source": "memory",
+      "snippet": "- **Implementation:** SQLite FTS5 virtual table - **Test query:** `SELECT * FROM chunks_fts WHERE chunks_fts MATCH 'bootstrap'` - **Result:** Returns relevant chunks from MEMORY.md and chat transcripts ### Vector Embeddings - **Status:** ❌ NOT active - **Model:** `fts-only` (placeholder) - **Embedding length:** 2 bytes (empty placeholder) - **Conclusion:** OpenClaw is using text-only search, no semantic embeddings ## Findings **What's indexed:** - ✅ MEMORY.md - ✅ memory/*.md files (daily logs, reports) - ✅ memory/slack-exports/testing-env/*.md (chat transcripts) **What's NOT indexed:** - ❌ Session transcripts (from OpenClaw agent runs) - ❌ Bootstrap context files (SOUL.md, AGENTS.md, HAN",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-26T21:49:17.113Z",
+      "lastRecalledAt": "2026-05-26T21:49:17.113Z",
+      "queryHashes": [
+        "8656a4ee9333"
+      ],
+      "recallDays": [
+        "2026-05-26"
+      ],
+      "conceptTags": [
+        "embedding",
+        "embeddings",
+        "2026-05-26-sql-01-audit.md",
+        "chunks-fts",
+        "memory.md",
+        "fts-only",
+        "text-only",
+        "memory/slack-exports/testing-env"
+      ]
+    },
+    "memory:memory/2026-05-26-memory-archive.md:103:161": {
+      "key": "memory:memory/2026-05-26-memory-archive.md:103:161",
+      "path": "memory/2026-05-26-memory-archive.md",
+      "startLine": 103,
+      "endLine": 161,
+      "source": "memory",
+      "snippet": "**Workaround:** Use `groupPolicy: \"open\"` (less secure but accepted). **Avoid:** Running `openclaw doctor --fix` when manual Slack config is present — it strips the config instead of migrating it. --- ## Infrastructure | Item | Detail | |---|---| | Machine | testbed-m1, Hetzner VPS | | Tailscale IP | 100.94.9.125 | | OS | Ubuntu 24.04 | | Honcho server | http://100.77.0.47:8000 (honcho-m1) | | Dropbox MCP | http://100.77.0.47:3001 (honcho-m1, SOP-03) | | Workspace repo | Ascendancy-Group/testbed-workspace | ### Hetzner Snapshots **Latest GOLD snapshot:** `Testbed-M1-GOLD-Slack&JSON-05-14-2026` - Created: 2026-05-14 15:32 CDT - Status: Known-good baseline with working Slack integration",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-26T23:35:08.257Z",
+      "lastRecalledAt": "2026-05-26T23:35:14.244Z",
+      "queryHashes": [
+        "ef96a69d4b6b",
+        "68afd2d48973"
+      ],
+      "recallDays": [
+        "2026-05-26"
+      ],
+      "conceptTags": [
+        "2026-05-26-memory-archive.md",
+        "testbed-m1",
+        "100.94.9.125",
+        "24.04",
+        "100.77.0.47",
+        "honcho-m1",
+        "sop-03",
+        "testbed-m1-gold-slack"
+      ]
+    },
+    "memory:memory/2026-05-20-bob-json-discrepancies.md:99:159": {
+      "key": "memory:memory/2026-05-20-bob-json-discrepancies.md:99:159",
+      "path": "memory/2026-05-20-bob-json-discrepancies.md",
+      "startLine": 99,
+      "endLine": 159,
+      "source": "memory",
+      "snippet": "\"enabled\": true, \"requireMention\": false, \"allowBots\": true }, \"#admin-channel-shared-context\": { \"requireMention\": false, \"enabled\": true }, \"#gofindmyjob-project\": { \"requireMention\": false, \"enabled\": true, \"allowBots\": true } } } ``` **Finding:** - #testing-env (C0B1WLM3P8X) is correctly configured - `requireMention: false` — Bob should respond to all messages - `allowBots: true` — Bob should see Testbed's messages - No channel permissions issue **The \"vanilla Bob\" behavior was NOT caused by Slack config** — it was the missing workspace configuration. --- ## MemPalace MCP Configuration: Correct **Verification:** `",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-26T23:35:08.257Z",
+      "lastRecalledAt": "2026-05-26T23:35:14.244Z",
+      "queryHashes": [
+        "ef96a69d4b6b",
+        "68afd2d48973"
+      ],
+      "recallDays": [
+        "2026-05-26"
+      ],
+      "conceptTags": [
+        "admin-channel-shared-context",
+        "gofindmyjob-project",
+        "testing-env",
+        "bob",
+        "discrepancies.md",
+        "enabled",
+        "true",
+        "requiremention"
+      ]
+    },
+    "memory:memory/2026-05-26-memory-archive.md:1:53": {
+      "key": "memory:memory/2026-05-26-memory-archive.md:1:53",
+      "path": "memory/2026-05-26-memory-archive.md",
+      "startLine": 1,
+      "endLine": 53,
+      "source": "memory",
+      "snippet": "# MEMORY.md Archive — 2026-05-26 *Archived during QW-02 (MEMORY.md Cleanup)* *Original: 153 lines, 3,977 chars* *New slim version: see MEMORY.md* --- ## Archived Content (Full Original) # MEMORY.md — Testbed Core Memory *Last updated: 2026-05-12* --- ## Identity - **Name:** Testbed | **Machine:** testbed-m1 | **Role:** Infrastructure tester - **Tailscale IP:** 100.94.9.125 - **Workspace repo:** Ascendancy-Group/testbed-workspace (public — proven scripts available to all agents) --- ## Purpose Test infrastructure changes before they touch production. Document everything. Script repeatability. Hand proven approaches to Bob for production deployment. --- ## Test Queue (Priority Orde",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-26T23:35:08.257Z",
+      "lastRecalledAt": "2026-05-26T23:35:14.244Z",
+      "queryHashes": [
+        "ef96a69d4b6b",
+        "68afd2d48973"
+      ],
+      "recallDays": [
+        "2026-05-26"
+      ],
+      "conceptTags": [
+        "2026-05-26-memory-archive.md",
+        "memory.md",
+        "qw-02",
+        "testbed-m1",
+        "100.94.9.125",
+        "archive.md",
+        "archive",
+        "archived"
       ]
     }
   }
