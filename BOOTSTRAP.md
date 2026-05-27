@@ -199,3 +199,21 @@ grep "bootstrapMaxChars" ~/.openclaw/openclaw.json
 ---
 
 *These bootstrap checks ensure agent health, context control, and cost management. Run them every session start.*
+
+## Daily Start Checks (Automatic)
+
+```bash
+# Run daily checks once per day at session start
+TIMESTAMP_FILE=~/.openclaw/workspace/.daily-start-timestamp
+TODAY=$(date +%Y-%m-%d)
+
+if [ ! -f "$TIMESTAMP_FILE" ] || [ "$(cat $TIMESTAMP_FILE)" != "$TODAY" ]; then
+  echo "Running daily start checks..."
+  if python3 ~/scripts/daily-checks.py; then
+    echo "$TODAY" > "$TIMESTAMP_FILE"
+    echo "✅ Daily start checks passed"
+  else
+    echo "❌ Daily start checks FAILED - review logs before proceeding"
+  fi
+fi
+```
