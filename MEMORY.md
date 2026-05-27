@@ -87,3 +87,28 @@ Applies to: openclaw.json edits, scope changes, channel configs, identity change
 
 *Detailed context, proven approaches, and full test logs: `memory/YYYY-MM-DD.md` and archived reports.*
 *Use `memory_search` tool to retrieve historical context.*
+
+---
+
+## Cost Optimization Deployment (2026-05-27)
+
+**Deployment complete.** Changes applied to Testbed only (Bob pending model verification).
+
+**Changes:**
+1. `compaction.reserveTokensFloor: 20000` — prevents context crashes
+2. `heartbeat.model: llama-3.3-70b:free` — heartbeat now $0 cost
+3. Updated fallback chain: `sonnet-4-5` → `llama-3.3-70b:free`
+
+**Backups:**
+- Hetzner snapshot: `Testbed-M1-PreJSON-ModelCahnges-CostReduction-05-27-2026`
+- JSON backup: `openclaw.json.backup-cost-optimization-20260527-163944`
+- GitHub: commits 7ce4d54, 14eb7ec
+
+**7-day validation window:** 2026-05-27 → 2026-06-03
+- Monitor: OpenRouter daily spend
+- Target: 60-70% reduction
+- Next: Wait for low-cost models (haiku, gpt-5-mini) to become available
+
+**Rollback:** JSON backup ready, <5 min restore if needed.
+
+---
