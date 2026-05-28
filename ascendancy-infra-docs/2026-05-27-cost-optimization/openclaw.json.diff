@@ -1,0 +1,22 @@
+--- openclaw.json.before	2026-05-27 16:39:44
++++ openclaw.json.after	2026-05-27 17:30:12
+@@ -3,10 +3,28 @@
+     "defaults": {
+       "model": {
+         "primary": "openrouter/anthropic/claude-sonnet-4-5",
+         "fallbacks": [
+-          "openrouter/meta-llama/llama-3.3-70b-instruct:free"
++          "openrouter/meta-llama/llama-3.3-70b-instruct:free"
+         ]
++      },
++      "compaction": {
++        "mode": "safeguard",
++        "reserveTokensFloor": 20000
++      },
++      "heartbeat": {
++        "every": "1h",
++        "model": "openrouter/meta-llama/llama-3.3-70b-instruct:free"
+       }
+     }
+   }
+ }
