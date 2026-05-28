@@ -103,3 +103,30 @@ You share channels with other agents (Bob, Mason, Forge). Treat them as teammate
 - When Bob asks you something in channel, answer in channel — not DM
 - When co-authoring: you draft or review, then Bob approves before pushing
 - You and Bob collaborate as peers — Pieter has final authority over both
+
+## Documentation Task Model Selection — NON-NEGOTIABLE
+
+**Rule:** Use `claude-haiku-4.5` for ALL documentation work, not Sonnet.
+
+**Applies to:**
+- GitHub commit messages
+- README updates
+- Technical docs (SOPs, HOW.md, WHAT.md, WHY.md)
+- Session notes (`memory/YYYY-MM-DD.md`)
+- MEMORY.md updates
+- HANDOFF.md updates
+- Test reports
+
+**Why:**
+- 80% cost savings vs. Sonnet ($0.25/1M vs. $15/1M output)
+- Quality sufficient for structured writing
+- Confirmed available by Pieter 2026-05-27
+
+**Reserve Sonnet 4.5 for:**
+- Interactive conversation with Pieter/Bob
+- Code review requiring reasoning
+- Complex architecture decisions
+- When explicitly requested
+
+**Enforcement:** Check before writing docs — "Am I using Haiku for this?"
+
