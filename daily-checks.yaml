@@ -1,0 +1,208 @@
+# Daily Checks Configuration for OpenClaw Agents
+# ==============================================
+#
+# This file defines the checks run at session start (once per day).
+# Each agent can customize this file for their specific needs.
+#
+# Location: ~/.openclaw/daily-checks.yaml
+# Used by: ~/scripts/daily-checks.py
+# Called from: BOOTSTRAP.md at session start
+#
+# Cost: $0.00/day (all checks use FREE model or bash commands)
+
+# Agent identification
+agent:
+  # Agent name (testbed, bob, mason, forge)
+  name: testbed
+  
+  # Workspace directory (where SOUL.md, MEMORY.md, etc. live)
+  workspace: /home/pieter/.openclaw/workspace
+
+# Daily startup checks
+# Each check has:
+#   - name: Human-readable name
+#   - type: Check type (command, http, file_size, json_key, git_pull, llm)
+#   - required: If true, failure blocks agent startup
+#   - type-specific parameters (see examples below)
+checks:
+  # Check 1: 1Password CLI is authenticated
+  # Ensures agent can read secrets from 1Password
+  - name: 1Password Health
+    type: command
+    command: op whoami
+    required: false
+    timeout: 10
+
+  # Check 2: Dropbox write test (direct API via SOP-04 method)
+  # Validates end-to-end Dropbox access using 1Password credentials
+  # Independent of OpenClaw MCP tool availability
+  - name: Dropbox Write Test
+    type: dropbox_write_test
+    test_file: /(Admin)/Bootstrap/.bootstrap-probe.txt
+    test_content: bootstrap-test-{timestamp}
+    cleanup: false
+    required: false
+
+  # Check 3: GitHub CLI is authenticated
+  # Ensures agent can push commits, open PRs, etc.
+  - name: GitHub Access
+    type: command
+    command: gh auth status
+    required: false
+    timeout: 10
+
+  # Check 4: Pull latest governance repo
+  # Syncs SOPs, lessons learned, playbooks
+  - name: Governance Sync
+    type: git_pull
+    repo: /home/pieter/repos/ascendancy-governance
+    required: false
+
+  # Check 5: Bootstrap file sizes within limits
+  # Verifies context injection control (SOP-15)
+  # Limit: 60,000 chars total (15,000 per file)
+  - name: Bootstrap Size
+    type: file_size
+    files:
+      - SOUL.md
+      - AGENTS.md
+      - MEMORY.md
+      - USER.md
+      - TOOLS.md
+      - HEARTBEAT.md
+      - IDENTITY.md
+      - HANDOFF.md
+      - BOOTSTRAP.md
+    max_total: 60000
+    required: false
+
+  # Check 6: Config has bootstrap limits
+  # Ensures openclaw.json has context injection limits
+  - name: Config Limits Present
+    type: json_key
+    file: ~/.openclaw/openclaw.json
+    key: agents.defaults.bootstrapMaxChars
+    required: false
+
+  # Check 7: OpenClaw gateway is running
+  # Validates core infrastructure
+  - name: Gateway Health
+    type: command
+    command: openclaw gateway status
+    expect: running
+    required: false
+    timeout: 10
+
+  # Check 8: Personality self-test (FREE model)
+  # Verifies SOUL.md loaded correctly (no vanilla responses)
+  # COST: $0.00 (uses FREE model)
+  - name: Personality Self-Test
+    type: llm
+    model: meta-llama/llama-3.3-70b-instruct:free
+    prompt: "Who are you? What is your purpose? Answer in 2-3 sentences."
+    # Response must contain these terms (case-insensitive)
+    expect_contains:
+      - testbed
+      - infrastructure
+      - testing
+    required: false
+
+# Agent-Specific Checks
+# =====================
+# Uncomment and customize for specific agents:
+
+# Bob (Builder) - add Paperclip checks
+# - name: Paperclip Health
+#   type: http
+#   url: http://100.77.0.47:8080/health
+#   expect: ok
+#   required: false
+
+# Mason (GFMJ) - add GFMJ-specific checks
+# - name: GFMJ Database
+#   type: command
+#   command: psql -U mason -d gfmj -c "SELECT 1"
+#   required: false
+
+# Forge (Smoochypig) - add Smoochypig checks
+# - name: Smoochypig API
+#   type: http
+#   url: https://smoochypig.com/api/health
+#   expect: healthy
+#   required: false
+
+# Optional Checks (Non-Blocking)
+# ==============================
+# Add checks that warn but don't block startup:
+#
+# - name: Disk Space
+#   type: command
+#   command: df -h / | tail -1 | awk '{print $5}' | sed 's/%//' | awk '{exit ($1 > 90) ? 1 : 0}'
+#   required: false
+#
+# - name: Memory Usage
+#   type: command
+#   command: free -m | awk 'NR==2{printf "%.0f", $3*100/$2 }'
+#   required: false
+
+# Advanced Check Types
+# ====================
+#
+# Command Check:
+#   - name: Example Command
+#     type: command
+#     command: echo "test"
+#     expect: test          # Optional: check stdout contains string
+#     timeout: 10           # Optional: timeout in seconds
+#     required: false
+#
+# HTTP Check:
+#   - name: Example HTTP
+#     type: http
+#     url: https://example.com
+#     header:               # Optional headers
+#       Authorization: Bearer token
+#     expect: success       # Optional: check body contains string
+#     timeout: 10
+#     required: false
+#
+# File Size Check:
+#   - name: Example File Size
+#     type: file_size
+#     files:
+#       - file1.txt
+#       - file2.txt
+#     max_total: 10000      # Bytes
+#     required: false
+#
+# JSON Key Check:
+#   - name: Example JSON Key
+#     type: json_key
+#     file: /path/to/file.json
+#     key: nested.key.path  # Dotted notation
+#     required: false
+#
+# Git Pull Check:
+#   - name: Example Git Pull
+#     type: git_pull
+#     repo: /path/to/repo
+#     required: false
+#
+# LLM Check (FREE model only):
+#   - name: Example LLM
+#     type: llm
+#     model: meta-llama/llama-3.3-70b-instruct:free
+#     prompt: "Question?"
+#     expect_contains:
+#       - word1
+#       - word2
+#     required: false
+
+# Notes
+# =====
+# - All checks run sequentially (not parallel)
+# - Total runtime target: < 30 seconds
+# - Required checks must pass or agent startup blocked
+# - Non-required checks warn but don't block
+# - Use FREE model only for LLM checks (zero cost)
+# - 1Password refs (op://...) resolved automatically in HTTP headers
