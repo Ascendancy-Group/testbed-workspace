@@ -19,7 +19,9 @@ This document guides Bob through deploying bootstrap v2 to himself, then Mason, 
 **What it proves:**
 - 1Password access (read real secrets by UUID)
 - GitHub access (PAT from 1PW + repo validation)
-- Dropbox access (write + read test file via MCP)
+- Dropbox access (direct API via 1PW credentials, SOP-04 method)
+  - **Note:** Bootstrap uses direct Dropbox API to test foundation
+  - MCP tools remain available for day-to-day file operations
 - Governance repo sync
 - Bootstrap size limits
 - Config limits present
@@ -46,16 +48,18 @@ If any are missing, stop and resolve before proceeding.
 
 ### Phase 1: Deploy to Bob (Self)
 
-#### Step 1: Pull Files from Testbed Workspace Repo
+#### Step 1: Pull Files from Governance Repo
 
 ```bash
-cd ~
-git clone https://github.com/Ascendancy-Group/testbed-workspace.git tmp-bootstrap-pull
-cp tmp-bootstrap-pull/BOOTSTRAP.md ~/.openclaw/workspace/
+cd ~/repos/ascendancy-governance
+git pull
+
+# Copy bootstrap files to your workspace
+cp ~/repos/ascendancy-governance/playbook/BOOTSTRAP.md ~/.openclaw/workspace/
 mkdir -p ~/scripts
-cp tmp-bootstrap-pull/scripts/daily-checks.py ~/scripts/
+cp ~/repos/ascendancy-governance/playbook/scripts/daily-checks.py ~/scripts/
+cp ~/repos/ascendancy-governance/playbook/daily-checks.yaml ~/.openclaw/
 chmod +x ~/scripts/daily-checks.py
-rm -rf tmp-bootstrap-pull
 ```
 
 **Verify files copied:**
@@ -202,16 +206,18 @@ Ready to deploy to Mason next.
 ssh pieter@mason-m1
 ```
 
-#### Step 2: Pull Files
+#### Step 2: Pull Files from Governance Repo
 
 ```bash
-cd ~
-git clone https://github.com/Ascendancy-Group/testbed-workspace.git tmp-bootstrap-pull
-cp tmp-bootstrap-pull/BOOTSTRAP.md ~/.openclaw/workspace/
+cd ~/repos/ascendancy-governance
+git pull
+
+# Copy bootstrap files
+cp ~/repos/ascendancy-governance/playbook/BOOTSTRAP.md ~/.openclaw/workspace/
 mkdir -p ~/scripts
-cp tmp-bootstrap-pull/scripts/daily-checks.py ~/scripts/
+cp ~/repos/ascendancy-governance/playbook/scripts/daily-checks.py ~/scripts/
+cp ~/repos/ascendancy-governance/playbook/daily-checks.yaml ~/.openclaw/
 chmod +x ~/scripts/daily-checks.py
-rm -rf tmp-bootstrap-pull
 ```
 
 #### Step 3: Update Mason's AGENTS.md
@@ -329,8 +335,10 @@ If you encounter any blockers:
 
 ## References
 
-- **Testbed workspace repo:** https://github.com/Ascendancy-Group/testbed-workspace
+- **Governance repo (source of truth):** https://github.com/Ascendancy-Group/ascendancy-governance
+- **Bootstrap files location:** `playbook/BOOTSTRAP.md`, `playbook/scripts/daily-checks.py`
 - **Bootstrap v2 design discussion:** `#testing-env` (2026-06-09 evening)
+- **Dropbox direct API proof:** `#testing-env` (2026-06-10 morning)
 - **Bob's 1PW/Dropbox/GitHub access proofs:** `#testing-env` (2026-06-09 19:20)
 - **Hetzner snapshots:** `Pre-Bootstrap.md-implementation-06-09-2026`
 
