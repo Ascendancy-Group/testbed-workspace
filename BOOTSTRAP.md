@@ -1,22 +1,72 @@
-# BOOTSTRAP.md — Testbed Session Startup
+# BOOTSTRAP.md — Complete Agent Session Startup
 
-**Run these checks at the start of every session.**
+**Run this completely at the start of EVERY session. No exceptions.**
 
 ---
 
-## 1. Identity Verification
+## STEP 1: Critical Access Verification (Automated)
+
+**Run daily checks script:**
 
 ```bash
-# Confirm who you are
-echo "I am Testbed, infrastructure tester on testbed-m1"
-echo "Purpose: Test infrastructure changes before production"
+python3 ~/scripts/daily-checks.py
 ```
 
-**Expected:** Clear identity from SOUL.md loaded
+**What this verifies:**
+- ✅ 1Password: Read real secret (proves we can access secrets)
+- ✅ GitHub: Pull PAT from 1PW, test repo access (proves end-to-end auth)
+- ✅ Dropbox: Write test file, read back (proves read + write access)
+- ✅ Governance: Check commits, sync if needed (efficient, only pulls when remote ahead)
+- ✅ Bootstrap size: Total < 60k chars (prevents context bloat)
+- ✅ Config: openclaw.json keys present (bootstrapMaxChars, etc.)
+
+**If ANY check fails:**
+- ❌ **STOP immediately**
+- Alert Pieter
+- **Do NOT proceed** until resolved
+- Review error messages, fix issue, re-run
+
+**If ALL checks pass:**
+- ✅ Continue to Step 2
+
+**Expected output:**
+```
+=== Daily Start Checks v2: Testbed ===
+Date: 2026-06-09 20:50:45
+
+1Password Secret Test... ✅
+GitHub PAT Validation... ✅
+Dropbox Write Test... ✅
+Governance Sync... ✅
+Bootstrap Size... ✅
+Config Limits Present... ✅
+
+✅ All required checks passed
+```
 
 ---
 
-## 2. Workspace State
+## STEP 2: Identity Verification
+
+**Confirm who you are:**
+
+```bash
+echo "I am [AgentName], [Role] on [Machine]"
+```
+
+**Expected from SOUL.md:**
+- Name: [Your agent name]
+- Machine: [Your machine hostname]
+- Role: [Your role]
+- Purpose: [Your purpose statement]
+
+**If answer is generic/vanilla:** Context injection problem — check logs, verify bootstrap limits in openclaw.json.
+
+---
+
+## STEP 3: Workspace State
+
+**Check workspace git status:**
 
 ```bash
 cd ~/.openclaw/workspace
@@ -24,130 +74,141 @@ cd ~/.openclaw/workspace
 # Check git status
 git status
 
-# Pull latest
+# Pull latest (if clean)
 git pull
 
 # Check for uncommitted changes
 git diff --stat
 ```
 
-**Expected:** Workspace clean or known pending changes
+**Expected:** Workspace clean or known pending changes.
+
+**If uncommitted changes exist:** Review them. Commit or stash before proceeding.
 
 ---
 
-## 3. Gateway Health
+## STEP 4: Gateway Health
+
+**Verify gateway is running:**
 
 ```bash
 # Gateway status
 openclaw gateway status | head -15
 
-# Check recent logs
+# Check recent logs for errors
 tail -50 /tmp/openclaw/openclaw-$(date +%Y-%m-%d).log | grep -i error
 ```
 
-**Expected:** Gateway running, no critical errors
+**Expected:** Gateway running, no critical errors.
+
+**If gateway not running:**
+```bash
+oc-restart  # Use wrapper script, NOT openclaw gateway restart
+```
 
 ---
 
-## 4. Context Injection Checks
+## STEP 5: Memory Sources
 
-**Added:** 2026-05-26 (See SOP-15, HR-01)
+**Pull context from all sources:**
 
-### Bootstrap Size Measurement
-
+### Honcho Context
 ```bash
-cd ~/.openclaw/workspace
-
-# Measure total bootstrap
-TOTAL=0
-for file in SOUL.md AGENTS.md MEMORY.md USER.md TOOLS.md HEARTBEAT.md IDENTITY.md HANDOFF.md; do
-  if [ -f "$file" ]; then
-    SIZE=$(wc -c < "$file")
-    TOTAL=$((TOTAL + SIZE))
-    echo "$file: $SIZE chars"
-  fi
-done
-echo "Total bootstrap: $TOTAL chars (limit: 60,000)"
-```
-
-**Expected:** Total < 60,000 chars ✅
-
-### Individual File Limits
-
-```bash
-# Check for oversized files
-cd ~/.openclaw/workspace
-for file in *.md; do
-  SIZE=$(wc -c < "$file")
-  if [ $SIZE -gt 15000 ]; then
-    echo "⚠️ $file: $SIZE chars (exceeds 15k limit)"
-  fi
-done
-```
-
-**Expected:** No files > 15,000 chars
-
-### MEMORY.md Line Count
-
-```bash
-wc -l MEMORY.md
-```
-
-**Expected:** < 100 lines (archive old content if over)
-
-### Config Verification
-
-```bash
-# Verify bootstrap limits in openclaw.json
-grep -A3 "bootstrapMaxChars" ~/.openclaw/openclaw.json
-```
-
-**Expected output:**
-```json
-"bootstrapMaxChars": 15000,
-"bootstrapTotalMaxChars": 60000
-```
-
-### Personality Self-Test
-
-**Ask yourself:** "Who are you? What is your purpose?"
-
-**Expected answer should include:**
-- Name: Testbed
-- Machine: testbed-m1
-- Role: Infrastructure tester
-- Purpose: Test changes before production
-
-**If answer is generic/vanilla:** Context injection problem - check logs and limits
-
----
-
-## 5. Memory Sources
-
-```bash
-# Pull Honcho context
 python3 ~/scripts/honcho-integration/honcho_client.py get-context
-
-# Check today's log exists
-ls -lh memory/$(date +%Y-%m-%d).md 2>/dev/null || echo "No log for today yet"
-
-# Read HANDOFF.md for current state
-head -20 HANDOFF.md
 ```
 
-**Expected:** Honcho accessible, HANDOFF.md up to date
+**Expected:** Returns prior session memory from Honcho server.
+
+**If fails:** Honcho server may be down (http://100.77.0.47:8000). Alert Pieter.
 
 ---
 
-## 6. Governance Sync
+### HANDOFF.md
+```bash
+cat ~/.openclaw/workspace/HANDOFF.md
+```
+
+**Look for:**
+- Blocked tasks
+- In-progress work
+- Urgent items
+- Anything flagged for follow-up from previous session
+
+**If HANDOFF.md missing:** Create it:
+```bash
+echo "# Handoff - $(date +%Y-%m-%d)" > HANDOFF.md
+```
+
+---
+
+### Today's Daily Note
+```bash
+TODAY=$(TZ=America/Chicago date +%Y-%m-%d)
+NOTE_FILE=~/.openclaw/workspace/memory/${TODAY}.md
+
+if [ ! -f "$NOTE_FILE" ]; then
+  echo "# Session Notes — $TODAY" > "$NOTE_FILE"
+  echo "Bootstrap completed: $(date -u +%H:%M UTC)" >> "$NOTE_FILE"
+fi
+```
+
+**This creates a record of today's session for future reference.**
+
+---
+
+## STEP 6: Governance Application
+
+**Governance was already synced in Step 1 (daily-checks.py).**
+
+Now read key files:
 
 ```bash
 cd ~/repos/ascendancy-governance
-git pull
-ls -lh playbook/sops/ | tail -5
+
+# Read core governance files
+cat GOVERNANCE.md | head -50
+cat TRUST.md | head -20
+
+# Check for recent changes (already scanned in Step 1)
+git log --since="7 days ago" --oneline -- playbook/ agents/
 ```
 
-**Expected:** Governance repo synced, SOPs accessible
+**Key things to verify:**
+- Standing decisions (GOVERNANCE.md)
+- Chain of command (TRUST.md)
+- Recent SOP updates (playbook/sops/)
+- Agent-specific rules (agents/[your-name]/)
+
+**If new SOPs exist:** Read them before proceeding with work.
+
+---
+
+## STEP 7: Project Context (If Applicable)
+
+**For project-specific agents (Mason, Forge):**
+
+Load project context from Dropbox:
+
+```bash
+# Example for GFMJ (Mason)
+# Read project brief
+# Read project memory
+# Read current sprint status
+```
+
+**Testbed:** Skip this step (infrastructure testing only).
+
+---
+
+## STEP 8: Announce Ready
+
+**Post to channel or log:**
+
+```
+✅ Bootstrap complete. All systems verified. Ready.
+```
+
+**If any step failed but you proceeded anyway:** Document what failed and why in today's daily note.
 
 ---
 
@@ -156,7 +217,6 @@ ls -lh playbook/sops/ | tail -5
 ### Context Injection Audit
 
 ```bash
-# Run full baseline measurement (QW-01)
 cd ~/.openclaw/workspace
 for file in SOUL.md AGENTS.md MEMORY.md USER.md TOOLS.md HEARTBEAT.md IDENTITY.md HANDOFF.md; do
   if [ -f "$file" ]; then
@@ -177,7 +237,7 @@ fi
 
 - Check OpenRouter dashboard: https://openrouter.ai/usage
 - Compare to previous week
-- Target: 50%+ reduction after QW-03 implementation (2026-05-26)
+- Target: 50%+ reduction after context injection control (2026-05-26)
 
 ### Config Verification
 
@@ -186,7 +246,7 @@ fi
 grep "bootstrapMaxChars" ~/.openclaw/openclaw.json
 ```
 
-**If missing:** Restore from backup, see SOP-14
+**If missing:** Restore from backup (see SOP-14).
 
 ---
 
@@ -195,25 +255,65 @@ grep "bootstrapMaxChars" ~/.openclaw/openclaw.json
 - **SOP-15:** Context Injection Management (full procedure)
 - **HR-01:** AGENTS.md hard rule (context injection control)
 - **QW-03:** Bootstrap limits implementation (2026-05-26)
+- **daily-checks.py:** Automation script for Step 1
 
 ---
 
-*These bootstrap checks ensure agent health, context control, and cost management. Run them every session start.*
+## Troubleshooting
 
-## Daily Start Checks (Automatic)
+### "Daily checks failed"
+
+**Review the specific check that failed:**
+- 1Password Test → Verify `op whoami`, check item exists
+- GitHub PAT → Verify PAT in 1PW, check repo permissions
+- Dropbox Test → Check MCP server running (honcho-m1)
+- Governance Sync → Check network, verify repo accessible
+- Bootstrap Size → Archive old MEMORY.md content
+- Config Limits → Restore openclaw.json from backup
+
+**Do not proceed until all required checks pass.**
+
+---
+
+### "Honcho context unavailable"
 
 ```bash
-# Run daily checks once per day at session start
-TIMESTAMP_FILE=~/.openclaw/workspace/.daily-start-timestamp
-TODAY=$(date +%Y-%m-%d)
+# Check Honcho server
+curl http://100.77.0.47:8000/health
 
-if [ ! -f "$TIMESTAMP_FILE" ] || [ "$(cat $TIMESTAMP_FILE)" != "$TODAY" ]; then
-  echo "Running daily start checks..."
-  if python3 ~/scripts/daily-checks.py; then
-    echo "$TODAY" > "$TIMESTAMP_FILE"
-    echo "✅ Daily start checks passed"
-  else
-    echo "❌ Daily start checks FAILED - review logs before proceeding"
-  fi
-fi
+# If down, alert Pieter
 ```
+
+---
+
+### "Governance repo conflicts"
+
+```bash
+cd ~/repos/ascendancy-governance
+git status
+
+# If conflicts exist
+git stash  # Save local changes
+git pull   # Get remote changes
+# Resolve conflicts manually or alert Pieter
+```
+
+---
+
+## Success Criteria
+
+**Bootstrap is successful when:**
+- ✅ All Step 1 checks passed
+- ✅ Identity verified (you know who you are)
+- ✅ Workspace clean or documented
+- ✅ Gateway running
+- ✅ Honcho context pulled
+- ✅ HANDOFF.md read
+- ✅ Governance current
+- ✅ Ready announcement made
+
+**If any step failed and you proceeded:** Document why in daily note and flag to Pieter.
+
+---
+
+*This is your complete session startup procedure. Run it every session. Don't skip steps. When in doubt, re-run bootstrap.*
