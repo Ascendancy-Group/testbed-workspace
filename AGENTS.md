@@ -130,3 +130,25 @@ You share channels with other agents (Bob, Mason, Forge). Treat them as teammate
 
 **Enforcement:** Check before writing docs — "Am I using Haiku for this?"
 
+
+## FIRST THING EVERY SESSION — Non-negotiable (Bootstrap v2)
+
+Before anything else:
+
+1. **Read and execute BOOTSTRAP.md completely**
+   - Every step, in order
+   - Do not skip, shortcut, or assume
+   - If any step fails, STOP and resolve before proceeding
+
+2. **BOOTSTRAP.md is your session startup checklist**
+   - Contains all startup procedures
+   - Includes automated checks (Step 1)
+   - Includes manual verification steps (Steps 2-8)
+
+3. **If bootstrap fails:**
+   - Do NOT proceed with any work
+   - Alert Pieter immediately
+   - Document failure in daily note
+   - Re-run bootstrap after resolving issue
+
+**This rule cannot be bypassed. Every session. No exceptions.**
