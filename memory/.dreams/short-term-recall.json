@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-09T23:07:22.039Z",
+  "updatedAt": "2026-06-15T18:10:07.261Z",
   "entries": {
     "memory:memory/slack-exports/testing-env/2026-05-16.md:295:335": {
       "key": "memory:memory/slack-exports/testing-env/2026-05-16.md:295:335",
@@ -605,19 +605,21 @@
       "endLine": 159,
       "source": "memory",
       "snippet": "\"enabled\": true, \"requireMention\": false, \"allowBots\": true }, \"#admin-channel-shared-context\": { \"requireMention\": false, \"enabled\": true }, \"#gofindmyjob-project\": { \"requireMention\": false, \"enabled\": true, \"allowBots\": true } } } ``` **Finding:** - #testing-env (C0B1WLM3P8X) is correctly configured - `requireMention: false` — Bob should respond to all messages - `allowBots: true` — Bob should see Testbed's messages - No channel permissions issue **The \"vanilla Bob\" behavior was NOT caused by Slack config** — it was the missing workspace configuration. --- ## MemPalace MCP Configuration: Correct **Verification:** `",
-      "recallCount": 2,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 2,
+      "totalScore": 3,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-26T23:35:08.257Z",
-      "lastRecalledAt": "2026-05-26T23:35:14.244Z",
+      "lastRecalledAt": "2026-06-15T18:10:07.261Z",
       "queryHashes": [
         "ef96a69d4b6b",
-        "68afd2d48973"
+        "68afd2d48973",
+        "25f76c12c491"
       ],
       "recallDays": [
-        "2026-05-26"
+        "2026-05-26",
+        "2026-06-15"
       ],
       "conceptTags": [
         "admin-channel-shared-context",
@@ -2409,6 +2411,347 @@
         "missing",
         "information",
         "what"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-05-28.md:1125:1154": {
+      "key": "memory:memory/slack-exports/testing-env/2026-05-28.md:1125:1154",
+      "path": "memory/slack-exports/testing-env/2026-05-28.md",
+      "startLine": 1125,
+      "endLine": 1154,
+      "source": "memory",
+      "snippet": "So that Redis instance Is for the Honcho project — the AI memory/context system running at `~/honcho/` on honcho-m1. It's part of the same stack as `honcho-api-1` and `honcho-database-1`. So currently the Docker for MCP-Dropbox runs Where **17:22 UTC BobWebDev:** Good question — let me check exactly where the current dropbox-mcp Docker container is defined and managed from. **17:22 UTC Testbed:** Got it! So the existing Redis container is for Honcho (AI memory system), not MCP. **Current state on honcho-m1:** **Honcho stack (separate project):** - `honcho-redis-1` (Redis 8.2) - Memory/context for Honcho - `honcho-api-1` - Honcho API - `honcho-database-1` - Honcho datab",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-06-15T18:10:07.258Z",
+      "lastRecalledAt": "2026-06-15T18:10:07.258Z",
+      "queryHashes": [
+        "bcead101458c"
+      ],
+      "recallDays": [
+        "2026-06-15"
+      ],
+      "conceptTags": [
+        "memory/context",
+        "honcho-m1",
+        "honcho-api-1",
+        "honcho-database-1",
+        "mcp-dropbox",
+        "dropbox-mcp",
+        "honcho-redis-1",
+        "8.2"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-05-28.md:1097:1119": {
+      "key": "memory:memory/slack-exports/testing-env/2026-05-28.md:1097:1119",
+      "path": "memory/slack-exports/testing-env/2026-05-28.md",
+      "startLine": 1097,
+      "endLine": 1119,
+      "source": "memory",
+      "snippet": "Bob or Pieter - can you confirm what this Redis container is currently used for? That will help me: • Decide if we should reuse it (preferred) or deploy a separate instance • Choose the right database number to avoid collisions • Update the architecture document accordingly **17:20 UTC BobWebDev:** That answers it clearly: *`honcho-redis-1` is the Redis instance for the Honcho project* — the AI memory/context system running at `~/honcho/` on honcho-m1. It's part of the same stack as `honcho-api-1` and `honcho-database-1`. *Current state:* - *0 keys stored* — empty keyspace right now - *Only 1.17MB memory* — barely doing anything - *Bound to 127.0.0.1 only* — not exp",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-06-15T18:10:07.258Z",
+      "lastRecalledAt": "2026-06-15T18:10:07.258Z",
+      "queryHashes": [
+        "bcead101458c"
+      ],
+      "recallDays": [
+        "2026-06-15"
+      ],
+      "conceptTags": [
+        "honcho-redis-1",
+        "memory/context",
+        "honcho-m1",
+        "honcho-api-1",
+        "honcho-database-1",
+        "1.17mb",
+        "127.0.0.1",
+        "bob"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-05-28.md:1114:1132": {
+      "key": "memory:memory/slack-exports/testing-env/2026-05-28.md:1114:1132",
+      "path": "memory/slack-exports/testing-env/2026-05-28.md",
+      "startLine": 1114,
+      "endLine": 1132,
+      "source": "memory",
+      "snippet": "*Back to the original question:* Since it's Honcho's Redis and is internal to that stack, the cleaner approach for dropbox-mcp is *Option A — its own self-contained Redis container*. That way there's zero dependency between the two stacks and no risk of a dropbox-mcp bug or flush command touching Honcho's data. I'll update my review note in the Dropbox doc to reflect: *dropbox-mcp should include its own Redis in docker-compose, isolated from Honcho.* Give me a moment to push that correction to Dropbox. **17:21 UTC BobWebDev:** Review doc updated in Dropbox. :white_check_mark: _The Redis verdict:_ `honcho-redis-1` is Honcho's Redis — belongs to that stack, should stay isolated. The",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-06-15T18:10:07.258Z",
+      "lastRecalledAt": "2026-06-15T18:10:07.258Z",
+      "queryHashes": [
+        "bcead101458c"
+      ],
+      "recallDays": [
+        "2026-06-15"
+      ],
+      "conceptTags": [
+        "dropbox-mcp",
+        "self-contained",
+        "docker-compose",
+        "white-check-mark",
+        "honcho-redis-1",
+        "back",
+        "original",
+        "question"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-05-28.md:1178:1214": {
+      "key": "memory:memory/slack-exports/testing-env/2026-05-28.md:1178:1214",
+      "path": "memory/slack-exports/testing-env/2026-05-28.md",
+      "startLine": 1178,
+      "endLine": 1214,
+      "source": "memory",
+      "snippet": "• Dropbox MCP: `~/ascendancy-mcp-servers/dropbox-mcp/` (stdio mode, systemd service) • Honcho Redis: `honcho-redis-1` (for Honcho AI memory, DO NOT REUSE) *v2.0 plan needs to be adjusted:* 1. Deploy *new Redis container* for MCP (separate from Honcho) 2. Deploy *new Docker-based MCP server* 3. Both in same docker-compose stack 4. Replace existing stdio MCP service *Next step:* I'll update the architecture document to clarify this, then wait for Bob's review comments before writing the implementation code. Should I proceed with updating the document to reflect: • Separate Redis container for MCP (honcho-redis-1 stays with Honcho) • Docker deployment that rep",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-06-15T18:10:07.258Z",
+      "lastRecalledAt": "2026-06-15T18:10:07.258Z",
+      "queryHashes": [
+        "bcead101458c"
+      ],
+      "recallDays": [
+        "2026-06-15"
+      ],
+      "conceptTags": [
+        "honcho-redis-1",
+        "v2.0",
+        "docker-based",
+        "docker-compose",
+        "dropbox",
+        "mcp",
+        "ascendancy",
+        "servers"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-05-28.md:1151:1187": {
+      "key": "memory:memory/slack-exports/testing-env/2026-05-28.md:1151:1187",
+      "path": "memory/slack-exports/testing-env/2026-05-28.md",
+      "startLine": 1151,
+      "endLine": 1187,
+      "source": "memory",
+      "snippet": "• _Running container:_ managed from `~/docker/dropbox-mcp/docker-compose.yml` — this is what's actually serving port 3001 For the v2.0 Python migration, Testbed should build the new Python image and drop the new `docker-compose.yml` into `~/docker/dropbox-mcp/` on honcho-m1, replacing the current one. That's the right location to target. **17:23 UTC Testbed:** From SOP-04, the MCP server runs as a systemd service. Let me check if there's info about its current location: **17:23 UTC Testbed:** Perfect! Now I understand the current setup: *Current Dropbox MCP on honcho-m1:* • Location: `~/ascendancy-mcp-servers/dropbox-mcp/` • Port: 3001 • Mode: stdio mode (NOT Docker curr",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-06-15T18:10:07.258Z",
+      "lastRecalledAt": "2026-06-15T18:10:07.258Z",
+      "queryHashes": [
+        "bcead101458c"
+      ],
+      "recallDays": [
+        "2026-06-15"
+      ],
+      "conceptTags": [
+        "v2.0",
+        "docker-compose.yml",
+        "docker/dropbox-mcp",
+        "honcho-m1",
+        "sop-04",
+        "running",
+        "container",
+        "managed"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-05-28.md:928:958": {
+      "key": "memory:memory/slack-exports/testing-env/2026-05-28.md:928:958",
+      "path": "memory/slack-exports/testing-env/2026-05-28.md",
+      "startLine": 928,
+      "endLine": 958,
+      "source": "memory",
+      "snippet": "• *(A)* Replace the existing honcho-m1 MCP server with this Docker-based v2.0 architecture, or • *(B)* Document an ideal future state while keeping the current server running? If (A), we need a migration plan before touching anything on honcho-m1. If (B), the doc should say so explicitly. ─── Solid foundation — just needs those 4 fixes before anyone implements from it. **15:45 UTC Pieter van der Wal:** <@U0APZ3ERHGQ>, <@U0B2PGYCEVB> the intent is to enhance/redo the existing honcho-m1 MCP server with this Docker-based v2.0 architecture making it failure resistant robust and Easily implementable by Any Agent following an Step-Step Documentation (Updated SOP-04)",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-06-15T18:10:07.258Z",
+      "lastRecalledAt": "2026-06-15T18:10:07.258Z",
+      "queryHashes": [
+        "bcead101458c"
+      ],
+      "recallDays": [
+        "2026-06-15"
+      ],
+      "conceptTags": [
+        "honcho-m1",
+        "docker-based",
+        "v2.0",
+        "enhance/redo",
+        "step-step",
+        "sop-04",
+        "replace",
+        "existing"
+      ]
+    },
+    "memory:memory/2026-05-19-mempalace-phase1-7-evidence.md:40:93": {
+      "key": "memory:memory/2026-05-19-mempalace-phase1-7-evidence.md:40:93",
+      "path": "memory/2026-05-19-mempalace-phase1-7-evidence.md",
+      "startLine": 40,
+      "endLine": 93,
+      "source": "memory",
+      "snippet": "- **Command:** `python3 -m mempalace.mcp_server` - **Protocol:** JSON-RPC 2.0 via stdio - **Tools Exposed:** 28 tools including: - `mempalace_status` - `mempalace_search` - `mempalace_add_drawer` - `mempalace_list_wings` - `mempalace_kg_query` - etc. - **Result:** MCP server responding correctly ### Phase 5: OpenClaw JSON Wiring ✅ - **JSON Backup:** `testbed-mempalace-addition-2026-05-19_11-50.json` - **Config Added:** ```json { \"mcp\": { \"servers\": { \"mempalace\": { \"command\": \"python3\", \"args\": [\"-m\", \"mempalace.mcp_server\"], \"env\": { \"MEMPALACE_DIR\": \"/home/pieter/.mempalace\" } } } } } ``` - **Gateway Restart:**",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-06-15T18:10:07.261Z",
+      "lastRecalledAt": "2026-06-15T18:10:07.261Z",
+      "queryHashes": [
+        "25f76c12c491"
+      ],
+      "recallDays": [
+        "2026-06-15"
+      ],
+      "conceptTags": [
+        "backup",
+        "gateway",
+        "mempalace.mcp-server",
+        "json-rpc",
+        "2.0",
+        "mempalace-status",
+        "mempalace-search",
+        "mempalace-add-drawer"
+      ]
+    },
+    "memory:memory/2026-05-19-mempalace-phase1-7-evidence.md:1:51": {
+      "key": "memory:memory/2026-05-19-mempalace-phase1-7-evidence.md:1:51",
+      "path": "memory/2026-05-19-mempalace-phase1-7-evidence.md",
+      "startLine": 1,
+      "endLine": 51,
+      "source": "memory",
+      "snippet": "# MemPalace Phases 1-7 Validation Report **Date:** 2026-05-19 **Machine:** testbed-m1 (Testbed-M1) **Tester:** Testbed **MemPalace Version:** 3.3.0 (N-4 compliant: 5 versions behind 3.3.5) --- ## Executive Summary ✅ **MemPalace 3.3.0 MCP integration VALIDATED on testbed-m1** ✅ **All 7 testbed phases complete** ✅ **Ready for Phase 8 production rollout** --- ## Phase-by-Phase Results ### Phase 1: Prerequisites ✅ - **Python:** 3.12.3 - **pip3:** Available - **Hetzner Snapshot:** `Testbed-M1-MemPalaceImplement-05-19-2026` - **Result:** Clean environment confirmed ### Phase 2: Installation ✅ - **Command:** `pip3 install mempalace==3.3.0 --user --break-system-packages` - **Locatio",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-06-15T18:10:07.261Z",
+      "lastRecalledAt": "2026-06-15T18:10:07.261Z",
+      "queryHashes": [
+        "25f76c12c491"
+      ],
+      "recallDays": [
+        "2026-06-15"
+      ],
+      "conceptTags": [
+        "1-7",
+        "testbed-m1",
+        "3.3.0",
+        "n-4",
+        "3.3.5",
+        "phase-by-phase",
+        "3.12.3",
+        "break-system-packages"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-05-15.md:592:639": {
+      "key": "memory:memory/slack-exports/testing-env/2026-05-15.md:592:639",
+      "path": "memory/slack-exports/testing-env/2026-05-15.md",
+      "startLine": 592,
+      "endLine": 639,
+      "source": "memory",
+      "snippet": "TEST-06 is on the board. <@U0B2PGYCEVB> — that's your ticket, no blockers, snapshot is live. Go. **18:10 UTC Testbed:** Roger. Pulling TEST-06 from the Kanban now. **18:10 UTC Testbed:** *TEST-06 pulled:* <https://github.com/Ascendancy-Group/ascendancy-governance/issues/30> *Objective:* MemPalace setup &amp; validation on testbed-m1 *Steps:* 1. Read MemPalace docs in governance repo 2. Confirm installation/access 3. Run read/write test 4. Report back: version, storage path, confirmation *Snapshot ready:* `Testbed-M1-MeMPalace-PreTest-05-15-2026:13H08` Starting now. **18:11 UTC Testbed:** Reading MemPalace context from CONTEXT-ARCHITECTURE.md. *MemPala",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-06-15T18:10:07.261Z",
+      "lastRecalledAt": "2026-06-15T18:10:07.261Z",
+      "queryHashes": [
+        "25f76c12c491"
+      ],
+      "recallDays": [
+        "2026-06-15"
+      ],
+      "conceptTags": [
+        "test-06",
+        "testbed-m1",
+        "installation/access",
+        "read/write",
+        "context-architecture.md",
+        "test",
+        "board",
+        "u0b2pgycevb"
+      ]
+    },
+    "memory:memory/2026-05-19-mempalace-phase1-7-evidence.md:152:175": {
+      "key": "memory:memory/2026-05-19-mempalace-phase1-7-evidence.md:152:175",
+      "path": "memory/2026-05-19-mempalace-phase1-7-evidence.md",
+      "startLine": 152,
+      "endLine": 175,
+      "source": "memory",
+      "snippet": "| Item | Location | |------|----------| | Test palace | `/tmp/mempalace-test/` | | Test drawer | `/tmp/mempalace-test/docs/test-drawer-001.md` | | Palace data | `/home/pieter/.mempalace/` | | JSON backup | `~/.openclaw/testbed-mempalace-addition-2026-05-19_11-50.json` | | Hetzner snapshot | `Testbed-M1-MemPalaceImplement-05-19-2026` | | This report | `~/.openclaw/workspace/memory/2026-05-19-mempalace-phase1-7-evidence.md` | --- ## Conclusion **MemPalace 3.3.0 MCP integration is production-ready with one caveat: N-4 compliance.** **Recommendation:** Proceed with Phase 8 rollout using 3.3.0 (proven on testbed), then immediately follow with 3.3.5 upgrade validation and production upgrade.",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-06-15T18:10:07.261Z",
+      "lastRecalledAt": "2026-06-15T18:10:07.261Z",
+      "queryHashes": [
+        "25f76c12c491"
+      ],
+      "recallDays": [
+        "2026-06-15"
+      ],
+      "conceptTags": [
+        "backup",
+        "tmp/mempalace-test",
+        "home/pieter",
+        "3.3.0",
+        "production-ready",
+        "n-4",
+        "3.3.5",
+        "mempalace"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-05-15.md:630:668": {
+      "key": "memory:memory/slack-exports/testing-env/2026-05-15.md:630:668",
+      "path": "memory/slack-exports/testing-env/2026-05-15.md",
+      "startLine": 630,
+      "endLine": 668,
+      "source": "memory",
+      "snippet": "• No `memory/slack-exports/` directory • No `mempalace` command in PATH • No systemd timers running *Next step:* Check governance repo for MemPalace installation docs/scripts. **18:12 UTC Testbed:** *Blocker identified:* MemPalace is referenced in governance docs as foundational infrastructure (Layer 1 of context stack), but: • No MemPalace binary found on testbed-m1 • No installation scripts in governance repo • No `memory/slack-exports/` directory structure • Docs reference it as \"installed\" on other machines but don't explain what it is or how to install it *Questions for clarification:* 1. Is MemPalace a standalone tool that needs to be installed, or i",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-06-15T18:10:07.261Z",
+      "lastRecalledAt": "2026-06-15T18:10:07.261Z",
+      "queryHashes": [
+        "25f76c12c491"
+      ],
+      "recallDays": [
+        "2026-06-15"
+      ],
+      "conceptTags": [
+        "memory/slack-exports",
+        "docs/scripts",
+        "testbed-m1",
+        "slack",
+        "exports",
+        "directory",
+        "mempalace",
+        "command"
       ]
     }
   }
