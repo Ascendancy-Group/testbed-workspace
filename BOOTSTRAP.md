@@ -27,7 +27,7 @@ python3 ~/scripts/daily-checks.py
 - Review error messages, fix issue, re-run
 
 **If ALL checks pass:**
-- ✅ Continue to Step 2
+- ✅ Continue to Step 1.5
 
 **Expected output:**
 ```
@@ -43,6 +43,67 @@ Config Limits Present... ✅
 
 ✅ All required checks passed
 ```
+
+---
+
+## STEP 1.5: Independent API Verification (Manual)
+
+**Critical rule:** Never trust automated checks alone. Verify API access independently.
+
+### 1Password Direct Test
+
+```bash
+echo "Testing 1Password CLI access..."
+op vault list
+```
+
+**Expected:** List of vaults (at minimum: AgentStack)
+
+**If fails:**
+- Check `op whoami` → are you signed in?
+- Check `OP_SERVICE_ACCOUNT_TOKEN` environment variable
+- Re-authenticate: `eval $(op signin)`
+- Alert Pieter if persistent failure
+
+---
+
+### Dropbox MCP Direct Test
+
+```bash
+echo "Testing Dropbox MCP server..."
+
+# Option 1: Health check (if MCP server on honcho-m1)
+curl -s http://100.77.0.47:3001/health
+
+# Option 2: Test via OpenClaw MCP client (if available)
+# python3 -c "from dropbox_mcp_client import test_connection; test_connection()"
+```
+
+**Expected:** Health check returns 200 OK, or MCP connection succeeds
+
+**If fails:**
+- Check if Dropbox MCP server running on honcho-m1
+- SSH to honcho-m1: `systemctl --user status dropbox-mcp.service`
+- Check OpenClaw MCP config: `grep -A10 dropbox ~/.openclaw/openclaw.json`
+- Alert Pieter if server down
+
+---
+
+### Hard Rule
+
+**If either 1Password or Dropbox verification fails:**
+- ❌ **STOP immediately**
+- Document failure in daily note: `memory/$(date +%Y-%m-%d).md`
+- Alert Pieter in #testing-env
+- **Do NOT proceed with any work** until access restored
+
+**Why this matters:**
+- Automated checks can report false positives
+- API access failures block critical workflows (secrets, file uploads, backups)
+- Early detection prevents wasted work
+
+**If both verifications pass:**
+- ✅ Continue to Step 2
 
 ---
 
