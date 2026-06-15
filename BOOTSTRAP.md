@@ -72,14 +72,11 @@ op vault list
 ```bash
 echo "Testing Dropbox MCP server..."
 
-# Option 1: Health check (if MCP server on honcho-m1)
-curl -s http://100.77.0.47:3001/health
-
-# Option 2: Test via OpenClaw MCP client (if available)
-# python3 -c "from dropbox_mcp_client import test_connection; test_connection()"
+# Health check (port 9090, not 3001 — see SOP-04)
+curl -s http://100.77.0.47:9090/health
 ```
 
-**Expected:** Health check returns 200 OK, or MCP connection succeeds
+**Expected:** `{"status":"healthy"}`
 
 **If fails:**
 - Check if Dropbox MCP server running on honcho-m1
