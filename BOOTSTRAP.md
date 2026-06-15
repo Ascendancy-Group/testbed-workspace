@@ -69,20 +69,41 @@ op vault list
 
 ### Dropbox MCP Direct Test
 
+**Updated 2026-06-15:** Dropbox MCP now runs as Docker container on honcho-m1, not systemd service.
+
 ```bash
 echo "Testing Dropbox MCP server..."
 
-# Health check (port 9090, not 3001 — see SOP-04)
+# Health check (port 9090 for metrics/health)
 curl -s http://100.77.0.47:9090/health
+
+# Test actual upload (small file)
+echo "Bootstrap health check - $(date)" | base64 -w0 > /tmp/bootstrap-test.b64
 ```
 
-**Expected:** `{"status":"healthy"}`
+**Expected health check:** `{"status":"healthy"}`
 
-**If fails:**
-- Check if Dropbox MCP server running on honcho-m1
-- SSH to honcho-m1: `systemctl --user status dropbox-mcp.service`
-- Check OpenClaw MCP config: `grep -A10 dropbox ~/.openclaw/openclaw.json`
-- Alert Pieter if server down
+**Then test upload via OpenClaw:**
+
+Use `dropbox__upload_file` tool with:
+- `dropbox_path`: `/Testing and Implementation/bootstrap-health-$(date +%Y-%m-%d).txt`
+- `content_base64`: (content of `/tmp/bootstrap-test.b64`)
+- `overwrite`: `true`
+
+**Expected upload result:** Success with file metadata (name, path, size)
+
+**If health check fails:**
+- SSH to honcho-m1: `ssh pieter@100.77.0.47`
+- Check Docker container: `docker ps | grep dropbox-mcp`
+- Check logs: `docker logs --tail 50 dropbox-mcp`
+- Restart if needed: `cd ~/docker/dropbox-mcp && docker compose restart dropbox-mcp`
+- Alert Pieter if persistent failure
+
+**If upload fails:**
+- Check MCP schema cached: Restart OpenClaw gateway (`systemctl --user restart openclaw-gateway.service`)
+- Check credentials in honcho-m1 `.env` file (should be actual values, not `op://` references)
+- Check circuit breaker state in server logs
+- See SOP-04 for full troubleshooting
 
 ---
 
