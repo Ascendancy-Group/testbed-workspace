@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-15T18:10:07.261Z",
+  "updatedAt": "2026-06-19T19:12:58.984Z",
   "entries": {
     "memory:memory/slack-exports/testing-env/2026-05-16.md:295:335": {
       "key": "memory:memory/slack-exports/testing-env/2026-05-16.md:295:335",
@@ -2752,6 +2752,37 @@
         "directory",
         "mempalace",
         "command"
+      ]
+    },
+    "memory:memory/2026-06-15.md:119:164": {
+      "key": "memory:memory/2026-06-15.md:119:164",
+      "path": "memory/2026-06-15.md",
+      "startLine": 119,
+      "endLine": 164,
+      "source": "memory",
+      "snippet": "- Formal promotion workflow - Recurring pattern detection - Cross-agent learning capability **Status:** Ready for Phase 2 (Testbed installation) after approval --- ## Dropbox Upload Failure **Issue:** Dropbox MCP circuit breaker tripped during upload. **Workaround:** - All three plans saved to `~/dropbox-staging/` - Ready for manual upload or retry **Files:** ``` ~/dropbox-staging/mempalace-migration-plan.md (14.7 KB) ~/dropbox-staging/honcho-implementation-plan.md (17.4 KB) ~/dropbox-staging/self-improvement-system-plan.md (22.5 KB) ``` **Dropbox target paths:** - `/Testing and Implementation/MemPalace to Honcho-M1 Migration/MemPalace-Migration-Plan.md` - `/Testing and",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-06-19T19:12:58.984Z",
+      "lastRecalledAt": "2026-06-19T19:12:58.984Z",
+      "queryHashes": [
+        "07da413db73b"
+      ],
+      "recallDays": [
+        "2026-06-19"
+      ],
+      "conceptTags": [
+        "cross-agent",
+        "dropbox-staging",
+        "14.7",
+        "17.4",
+        "22.5",
+        "implementation/mempalace",
+        "honcho-m1",
+        "formal"
       ]
     }
   }
