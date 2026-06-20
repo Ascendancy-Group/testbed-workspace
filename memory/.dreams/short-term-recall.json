@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-19T19:12:58.984Z",
+  "updatedAt": "2026-06-20T18:39:00.848Z",
   "entries": {
     "memory:memory/slack-exports/testing-env/2026-05-16.md:295:335": {
       "key": "memory:memory/slack-exports/testing-env/2026-05-16.md:295:335",
@@ -605,21 +605,23 @@
       "endLine": 159,
       "source": "memory",
       "snippet": "\"enabled\": true, \"requireMention\": false, \"allowBots\": true }, \"#admin-channel-shared-context\": { \"requireMention\": false, \"enabled\": true }, \"#gofindmyjob-project\": { \"requireMention\": false, \"enabled\": true, \"allowBots\": true } } } ``` **Finding:** - #testing-env (C0B1WLM3P8X) is correctly configured - `requireMention: false` — Bob should respond to all messages - `allowBots: true` — Bob should see Testbed's messages - No channel permissions issue **The \"vanilla Bob\" behavior was NOT caused by Slack config** — it was the missing workspace configuration. --- ## MemPalace MCP Configuration: Correct **Verification:** `",
-      "recallCount": 3,
+      "recallCount": 4,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 3,
+      "totalScore": 4,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-26T23:35:08.257Z",
-      "lastRecalledAt": "2026-06-15T18:10:07.261Z",
+      "lastRecalledAt": "2026-06-20T18:39:00.848Z",
       "queryHashes": [
         "ef96a69d4b6b",
         "68afd2d48973",
-        "25f76c12c491"
+        "25f76c12c491",
+        "cffbade7e7ba"
       ],
       "recallDays": [
         "2026-05-26",
-        "2026-06-15"
+        "2026-06-15",
+        "2026-06-20"
       ],
       "conceptTags": [
         "admin-channel-shared-context",
@@ -2606,18 +2608,20 @@
       "endLine": 93,
       "source": "memory",
       "snippet": "- **Command:** `python3 -m mempalace.mcp_server` - **Protocol:** JSON-RPC 2.0 via stdio - **Tools Exposed:** 28 tools including: - `mempalace_status` - `mempalace_search` - `mempalace_add_drawer` - `mempalace_list_wings` - `mempalace_kg_query` - etc. - **Result:** MCP server responding correctly ### Phase 5: OpenClaw JSON Wiring ✅ - **JSON Backup:** `testbed-mempalace-addition-2026-05-19_11-50.json` - **Config Added:** ```json { \"mcp\": { \"servers\": { \"mempalace\": { \"command\": \"python3\", \"args\": [\"-m\", \"mempalace.mcp_server\"], \"env\": { \"MEMPALACE_DIR\": \"/home/pieter/.mempalace\" } } } } } ``` - **Gateway Restart:**",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1,
+      "totalScore": 2,
       "maxScore": 1,
       "firstRecalledAt": "2026-06-15T18:10:07.261Z",
-      "lastRecalledAt": "2026-06-15T18:10:07.261Z",
+      "lastRecalledAt": "2026-06-20T18:39:00.848Z",
       "queryHashes": [
-        "25f76c12c491"
+        "25f76c12c491",
+        "cffbade7e7ba"
       ],
       "recallDays": [
-        "2026-06-15"
+        "2026-06-15",
+        "2026-06-20"
       ],
       "conceptTags": [
         "backup",
@@ -2637,18 +2641,20 @@
       "endLine": 51,
       "source": "memory",
       "snippet": "# MemPalace Phases 1-7 Validation Report **Date:** 2026-05-19 **Machine:** testbed-m1 (Testbed-M1) **Tester:** Testbed **MemPalace Version:** 3.3.0 (N-4 compliant: 5 versions behind 3.3.5) --- ## Executive Summary ✅ **MemPalace 3.3.0 MCP integration VALIDATED on testbed-m1** ✅ **All 7 testbed phases complete** ✅ **Ready for Phase 8 production rollout** --- ## Phase-by-Phase Results ### Phase 1: Prerequisites ✅ - **Python:** 3.12.3 - **pip3:** Available - **Hetzner Snapshot:** `Testbed-M1-MemPalaceImplement-05-19-2026` - **Result:** Clean environment confirmed ### Phase 2: Installation ✅ - **Command:** `pip3 install mempalace==3.3.0 --user --break-system-packages` - **Locatio",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1,
+      "totalScore": 2,
       "maxScore": 1,
       "firstRecalledAt": "2026-06-15T18:10:07.261Z",
-      "lastRecalledAt": "2026-06-15T18:10:07.261Z",
+      "lastRecalledAt": "2026-06-20T18:39:00.848Z",
       "queryHashes": [
-        "25f76c12c491"
+        "25f76c12c491",
+        "cffbade7e7ba"
       ],
       "recallDays": [
-        "2026-06-15"
+        "2026-06-15",
+        "2026-06-20"
       ],
       "conceptTags": [
         "1-7",
@@ -2668,18 +2674,20 @@
       "endLine": 639,
       "source": "memory",
       "snippet": "TEST-06 is on the board. <@U0B2PGYCEVB> — that's your ticket, no blockers, snapshot is live. Go. **18:10 UTC Testbed:** Roger. Pulling TEST-06 from the Kanban now. **18:10 UTC Testbed:** *TEST-06 pulled:* <https://github.com/Ascendancy-Group/ascendancy-governance/issues/30> *Objective:* MemPalace setup &amp; validation on testbed-m1 *Steps:* 1. Read MemPalace docs in governance repo 2. Confirm installation/access 3. Run read/write test 4. Report back: version, storage path, confirmation *Snapshot ready:* `Testbed-M1-MeMPalace-PreTest-05-15-2026:13H08` Starting now. **18:11 UTC Testbed:** Reading MemPalace context from CONTEXT-ARCHITECTURE.md. *MemPala",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1,
+      "totalScore": 2,
       "maxScore": 1,
       "firstRecalledAt": "2026-06-15T18:10:07.261Z",
-      "lastRecalledAt": "2026-06-15T18:10:07.261Z",
+      "lastRecalledAt": "2026-06-20T18:39:00.848Z",
       "queryHashes": [
-        "25f76c12c491"
+        "25f76c12c491",
+        "cffbade7e7ba"
       ],
       "recallDays": [
-        "2026-06-15"
+        "2026-06-15",
+        "2026-06-20"
       ],
       "conceptTags": [
         "test-06",
@@ -2699,18 +2707,20 @@
       "endLine": 175,
       "source": "memory",
       "snippet": "| Item | Location | |------|----------| | Test palace | `/tmp/mempalace-test/` | | Test drawer | `/tmp/mempalace-test/docs/test-drawer-001.md` | | Palace data | `/home/pieter/.mempalace/` | | JSON backup | `~/.openclaw/testbed-mempalace-addition-2026-05-19_11-50.json` | | Hetzner snapshot | `Testbed-M1-MemPalaceImplement-05-19-2026` | | This report | `~/.openclaw/workspace/memory/2026-05-19-mempalace-phase1-7-evidence.md` | --- ## Conclusion **MemPalace 3.3.0 MCP integration is production-ready with one caveat: N-4 compliance.** **Recommendation:** Proceed with Phase 8 rollout using 3.3.0 (proven on testbed), then immediately follow with 3.3.5 upgrade validation and production upgrade.",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1,
+      "totalScore": 2,
       "maxScore": 1,
       "firstRecalledAt": "2026-06-15T18:10:07.261Z",
-      "lastRecalledAt": "2026-06-15T18:10:07.261Z",
+      "lastRecalledAt": "2026-06-20T18:39:00.848Z",
       "queryHashes": [
-        "25f76c12c491"
+        "25f76c12c491",
+        "cffbade7e7ba"
       ],
       "recallDays": [
-        "2026-06-15"
+        "2026-06-15",
+        "2026-06-20"
       ],
       "conceptTags": [
         "backup",
