@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-20T18:39:00.848Z",
+  "updatedAt": "2026-06-22T18:50:39.231Z",
   "entries": {
     "memory:memory/slack-exports/testing-env/2026-05-16.md:295:335": {
       "key": "memory:memory/slack-exports/testing-env/2026-05-16.md:295:335",
@@ -605,23 +605,25 @@
       "endLine": 159,
       "source": "memory",
       "snippet": "\"enabled\": true, \"requireMention\": false, \"allowBots\": true }, \"#admin-channel-shared-context\": { \"requireMention\": false, \"enabled\": true }, \"#gofindmyjob-project\": { \"requireMention\": false, \"enabled\": true, \"allowBots\": true } } } ``` **Finding:** - #testing-env (C0B1WLM3P8X) is correctly configured - `requireMention: false` — Bob should respond to all messages - `allowBots: true` — Bob should see Testbed's messages - No channel permissions issue **The \"vanilla Bob\" behavior was NOT caused by Slack config** — it was the missing workspace configuration. --- ## MemPalace MCP Configuration: Correct **Verification:** `",
-      "recallCount": 4,
+      "recallCount": 5,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 4,
+      "totalScore": 5,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-26T23:35:08.257Z",
-      "lastRecalledAt": "2026-06-20T18:39:00.848Z",
+      "lastRecalledAt": "2026-06-22T18:50:30.512Z",
       "queryHashes": [
         "ef96a69d4b6b",
         "68afd2d48973",
         "25f76c12c491",
-        "cffbade7e7ba"
+        "cffbade7e7ba",
+        "a2d03252421d"
       ],
       "recallDays": [
         "2026-05-26",
         "2026-06-15",
-        "2026-06-20"
+        "2026-06-20",
+        "2026-06-22"
       ],
       "conceptTags": [
         "admin-channel-shared-context",
@@ -2608,20 +2610,23 @@
       "endLine": 93,
       "source": "memory",
       "snippet": "- **Command:** `python3 -m mempalace.mcp_server` - **Protocol:** JSON-RPC 2.0 via stdio - **Tools Exposed:** 28 tools including: - `mempalace_status` - `mempalace_search` - `mempalace_add_drawer` - `mempalace_list_wings` - `mempalace_kg_query` - etc. - **Result:** MCP server responding correctly ### Phase 5: OpenClaw JSON Wiring ✅ - **JSON Backup:** `testbed-mempalace-addition-2026-05-19_11-50.json` - **Config Added:** ```json { \"mcp\": { \"servers\": { \"mempalace\": { \"command\": \"python3\", \"args\": [\"-m\", \"mempalace.mcp_server\"], \"env\": { \"MEMPALACE_DIR\": \"/home/pieter/.mempalace\" } } } } } ``` - **Gateway Restart:**",
-      "recallCount": 2,
+      "recallCount": 4,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 2,
+      "totalScore": 4,
       "maxScore": 1,
       "firstRecalledAt": "2026-06-15T18:10:07.261Z",
-      "lastRecalledAt": "2026-06-20T18:39:00.848Z",
+      "lastRecalledAt": "2026-06-22T18:50:39.231Z",
       "queryHashes": [
         "25f76c12c491",
-        "cffbade7e7ba"
+        "cffbade7e7ba",
+        "a2d03252421d",
+        "91504388d690"
       ],
       "recallDays": [
         "2026-06-15",
-        "2026-06-20"
+        "2026-06-20",
+        "2026-06-22"
       ],
       "conceptTags": [
         "backup",
@@ -2641,20 +2646,23 @@
       "endLine": 51,
       "source": "memory",
       "snippet": "# MemPalace Phases 1-7 Validation Report **Date:** 2026-05-19 **Machine:** testbed-m1 (Testbed-M1) **Tester:** Testbed **MemPalace Version:** 3.3.0 (N-4 compliant: 5 versions behind 3.3.5) --- ## Executive Summary ✅ **MemPalace 3.3.0 MCP integration VALIDATED on testbed-m1** ✅ **All 7 testbed phases complete** ✅ **Ready for Phase 8 production rollout** --- ## Phase-by-Phase Results ### Phase 1: Prerequisites ✅ - **Python:** 3.12.3 - **pip3:** Available - **Hetzner Snapshot:** `Testbed-M1-MemPalaceImplement-05-19-2026` - **Result:** Clean environment confirmed ### Phase 2: Installation ✅ - **Command:** `pip3 install mempalace==3.3.0 --user --break-system-packages` - **Locatio",
-      "recallCount": 2,
+      "recallCount": 4,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 2,
+      "totalScore": 4,
       "maxScore": 1,
       "firstRecalledAt": "2026-06-15T18:10:07.261Z",
-      "lastRecalledAt": "2026-06-20T18:39:00.848Z",
+      "lastRecalledAt": "2026-06-22T18:50:39.231Z",
       "queryHashes": [
         "25f76c12c491",
-        "cffbade7e7ba"
+        "cffbade7e7ba",
+        "a2d03252421d",
+        "91504388d690"
       ],
       "recallDays": [
         "2026-06-15",
-        "2026-06-20"
+        "2026-06-20",
+        "2026-06-22"
       ],
       "conceptTags": [
         "1-7",
@@ -2793,6 +2801,163 @@
         "implementation/mempalace",
         "honcho-m1",
         "formal"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-06-19.md:436:458": {
+      "key": "memory:memory/slack-exports/testing-env/2026-06-19.md:436:458",
+      "path": "memory/slack-exports/testing-env/2026-06-19.md",
+      "startLine": 436,
+      "endLine": 458,
+      "source": "memory",
+      "snippet": ":hammer_and_wrench: ssh pieter@100.77.0.47 \"cd /opt/mempalace &amp;&amp; \\~/.local/bin/mempalace init . --yes\" :hammer_and_wrench: Exec :hammer_and_wrench: ssh pieter@100.77.0.47 \"cd /opt/mempalace &amp;&amp; \\~/.local/bin/mempalace init . --yes\" :hammer_and_wrench: completed; command ssh pieter@100.77.0.47 \"cd /opt/mempalace &amp;&amp; \\~/.local/bin/mempalace init . --yes\" **19:23 UTC Testbed:** Lobstering... :hammer_and_wrench: ssh pieter@100.77.0.47 \"cd /opt/mempalace &amp;&amp; \\~/.local/bin/mempalace status\" :hammer_and_wrench: Exec :hammer_and_wrench: ssh pieter@100.77.0.47 \"cd /opt/mempalace &amp;&amp; \\~/.local/bin/mempalace status\" :hammer_and_wrench: completed; comma",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-06-22T18:50:30.512Z",
+      "lastRecalledAt": "2026-06-22T18:50:39.231Z",
+      "queryHashes": [
+        "a2d03252421d",
+        "91504388d690"
+      ],
+      "recallDays": [
+        "2026-06-22"
+      ],
+      "conceptTags": [
+        "hammer-and-wrench",
+        "100.77.0.47",
+        "opt/mempalace",
+        "local/bin/mempalace",
+        "ssh",
+        "pieter",
+        "opt",
+        "mempalace"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-06-19.md:454:480": {
+      "key": "memory:memory/slack-exports/testing-env/2026-06-19.md:454:480",
+      "path": "memory/slack-exports/testing-env/2026-06-19.md",
+      "startLine": 454,
+      "endLine": 480,
+      "source": "memory",
+      "snippet": ":hammer_and_wrench: ssh pieter@100.77.0.47 \"\\~/.local/bin/mempalace --palace /opt/mempalace status\" :hammer_and_wrench: Exec :hammer_and_wrench: ssh pieter@100.77.0.47 \"\\~/.local/bin/mempalace --palace /opt/mempalace status\" :hammer_and_wrench: completed; command ssh pieter@100.77.0.47 \"\\~/.local/bin/mempalace --palace /opt/mempalace status\" **19:23 UTC Testbed:** Lobstering... :hammer_and_wrench: ssh pieter@100.77.0.47 \"cd /opt/mempalace &amp;&amp; \\~/.local/bin/mempalace mine .\" :hammer_and_wrench: Exec :hammer_and_wrench: ssh pieter@100.77.0.47 \"cd /opt/mempalace &amp;&amp; \\~/.local/bin/mempalace mine .\" :hammer_and_wrench: completed; command ssh pieter@100.77.0.47 \"cd /op",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-06-22T18:50:30.512Z",
+      "lastRecalledAt": "2026-06-22T18:50:39.231Z",
+      "queryHashes": [
+        "a2d03252421d",
+        "91504388d690"
+      ],
+      "recallDays": [
+        "2026-06-22"
+      ],
+      "conceptTags": [
+        "hammer-and-wrench",
+        "100.77.0.47",
+        "local/bin/mempalace",
+        "opt/mempalace",
+        "ssh",
+        "pieter",
+        "local",
+        "bin"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-06-19.md:1:29": {
+      "key": "memory:memory/slack-exports/testing-env/2026-06-19.md:1:29",
+      "path": "memory/slack-exports/testing-env/2026-06-19.md",
+      "startLine": 1,
+      "endLine": 29,
+      "source": "memory",
+      "snippet": "# #testing-env — 2026-06-19 **19:12 UTC Pieter van der Wal:** <@U0B2PGYCEVB> Can you execute the MemPalace migration to honcho-M1 by yourself **19:12 UTC Testbed:** I need to check the current state of MemPalace migration planning and the detailed steps before executing. Let me review what we have documented. **19:13 UTC Testbed:** Lobstering... :book: Read: from ~/dropbox-staging/mempalace-migration-plan.md **19:13 UTC Testbed:** Lobstering... :hammer_and_wrench: ssh honcho-m1 \"python3 -c 'import mempalace; print(mempalace.\\_\\_version\\_\\_)' 2&gt;&amp;1\" :hammer_and_wrench: Exec :hammer_and_wrench: ssh honcho-m1 \"python3 -c 'import mempalace; print(mempalace.\\_\\_version\\_\\_)",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-06-22T18:50:30.512Z",
+      "lastRecalledAt": "2026-06-22T18:50:30.512Z",
+      "queryHashes": [
+        "a2d03252421d"
+      ],
+      "recallDays": [
+        "2026-06-22"
+      ],
+      "conceptTags": [
+        "testing-env",
+        "honcho-m1",
+        "hammer-and-wrench",
+        "testing",
+        "env",
+        "utc",
+        "pieter",
+        "van"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-06-20.md:207:232": {
+      "key": "memory:memory/slack-exports/testing-env/2026-06-20.md:207:232",
+      "path": "memory/slack-exports/testing-env/2026-06-20.md",
+      "startLine": 207,
+      "endLine": 232,
+      "source": "memory",
+      "snippet": ":hammer_and_wrench: Exec :hammer_and_wrench: ssh pieter@100.77.0.47 \"python3 -m mempalace status\" :hammer_and_wrench: completed; command ssh pieter@100.77.0.47 \"python3 -m mempalace status\" **18:40 UTC Testbed:** Lobstering... :hammer_and_wrench: ssh pieter@100.77.0.47 \"ls -la /opt/mempalace 2&gt;&amp;1\" :hammer_and_wrench: Exec :hammer_and_wrench: ssh pieter@100.77.0.47 \"ls -la /opt/mempalace 2&gt;&amp;1\" :hammer_and_wrench: completed; command ssh pieter@100.77.0.47 \"ls -la /opt/mempalace 2&gt;&amp;1\" **18:40 UTC Testbed:** Lobstering... :hammer_and_wrench: ssh pieter@100.77.0.47 \"cat /opt/mempalace/mempalace.yaml\" :hammer_and_wrench: Exec :hammer_and_wrench: ssh pieter@",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-06-22T18:50:39.231Z",
+      "lastRecalledAt": "2026-06-22T18:50:39.231Z",
+      "queryHashes": [
+        "91504388d690"
+      ],
+      "recallDays": [
+        "2026-06-22"
+      ],
+      "conceptTags": [
+        "hammer-and-wrench",
+        "100.77.0.47",
+        "opt/mempalace",
+        "opt/mempalace/mempalace.yaml",
+        "exec",
+        "ssh",
+        "pieter",
+        "python3"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-06-20.md:185:213": {
+      "key": "memory:memory/slack-exports/testing-env/2026-06-20.md:185:213",
+      "path": "memory/slack-exports/testing-env/2026-06-20.md",
+      "startLine": 185,
+      "endLine": 213,
+      "source": "memory",
+      "snippet": ":hammer_and_wrench: completed; command ssh pieter@100.77.0.47 \"ls -la \\~/.local/bin/ | grep mempalace\" **18:39 UTC Testbed:** Lobstering... :hammer_and_wrench: ssh pieter@100.77.0.47 \"\\~/.local/bin/mempalace --version\" :hammer_and_wrench: Exec :hammer_and_wrench: ssh pieter@100.77.0.47 \"\\~/.local/bin/mempalace --version\" :hammer_and_wrench: exit 2; command ssh pieter@100.77.0.47 \"\\~/.local/bin/mempalace --version\" **18:40 UTC Testbed:** Lobstering... :hammer_and_wrench: ssh pieter@100.77.0.47 \"\\~/.local/bin/mempalace status --palace /opt/mempalace\" :hammer_and_wrench: Exec :hammer_and_wrench: ssh pieter@100.77.0.47 \"\\~/.local/bin/mempalace status --palace /opt/mempalace\" :h",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-06-22T18:50:39.231Z",
+      "lastRecalledAt": "2026-06-22T18:50:39.231Z",
+      "queryHashes": [
+        "91504388d690"
+      ],
+      "recallDays": [
+        "2026-06-22"
+      ],
+      "conceptTags": [
+        "hammer-and-wrench",
+        "100.77.0.47",
+        "local/bin",
+        "local/bin/mempalace",
+        "opt/mempalace",
+        "completed",
+        "command",
+        "ssh"
       ]
     }
   }
