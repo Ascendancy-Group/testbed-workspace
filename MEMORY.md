@@ -17,8 +17,8 @@ Test infrastructure changes before they touch production. Document everything. S
 ---
 
 ## Test Queue (Top 5 Priority)
-1. **Agent Slack Memory Config** — Context injection control (QW-02 in progress)
-2. MemPalace — full end-to-end proof (plan in Dropbox)
+1. **MemPalace Rollout** — Migrate Bob, Mason, Forge to centralized palace
+2. **Agent Slack Memory Config** — Context injection control (QW-02 in progress)
 3. Honcho — memory persistence + injection validation
 4. OpenClaw upgrades — version validation before prod rollout
 5. Gateway config changes — validate JSON changes before prod
@@ -63,6 +63,18 @@ Applies to: openclaw.json edits, scope changes, channel configs, identity change
 ---
 
 ## Key Findings (Recent)
+
+**MemPalace Centralization Complete (2026-06-22):**
+- Centralized on honcho-m1 at `/opt/mempalace/`
+- SSH + stdio MCP protocol working
+- All 28 tools functional
+- Daily backups confirmed
+- Documentation complete:
+  - ascendancy-infra: Implementation + Runbook
+  - ascendancy-governance: SOP-00 (Bootstrap) + SOP-16 (MemPalace)
+- Testbed validated, ready for rollout
+
+## Key Findings (Historical)
 
 **Slack Channel Monitoring (2026-05-14):**
 - 2026.5.7/5.12 schema bug rejects documented `groupAllowFrom`
