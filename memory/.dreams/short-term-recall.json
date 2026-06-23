@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-22T18:50:39.231Z",
+  "updatedAt": "2026-06-23T19:57:54.415Z",
   "entries": {
     "memory:memory/slack-exports/testing-env/2026-05-16.md:295:335": {
       "key": "memory:memory/slack-exports/testing-env/2026-05-16.md:295:335",
@@ -2958,6 +2958,99 @@
         "completed",
         "command",
         "ssh"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-05-26.md:6964:7029": {
+      "key": "memory:memory/slack-exports/testing-env/2026-05-26.md:6964:7029",
+      "path": "memory/slack-exports/testing-env/2026-05-26.md",
+      "startLine": 6964,
+      "endLine": 7029,
+      "source": "memory",
+      "snippet": "**23:05 UTC Testbed:** *Testbed: Acknowledged. Pieter has assigned me to do the Forge and Mason implementation.* *Time: 18:05 CDT* ─── *Understanding the Assignment* *Pieter is saying:* • Testbed (me) will implement context injection control on Forge and Mason • Not waiting for Bob to prepare Kanban • Proceeding directly with implementation ─── *Ready to Proceed* *I can implement on Forge and Mason using the same proven process as Bob:* *Prerequisites Needed:* 1. *SSH access to both machines:* • Forge machine (IP/hostname?) • Mason machine (IP/hostname?) 2. *SSH keys from 1Password:* • Forge SSH key • Mason SSH key",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-06-23T19:57:54.415Z",
+      "lastRecalledAt": "2026-06-23T19:57:54.415Z",
+      "queryHashes": [
+        "f158f75cccc1"
+      ],
+      "recallDays": [
+        "2026-06-23"
+      ],
+      "conceptTags": [
+        "ip/hostname",
+        "utc",
+        "testbed",
+        "acknowledged",
+        "pieter",
+        "has",
+        "assigned",
+        "forge"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-05-26.md:6883:6913": {
+      "key": "memory:memory/slack-exports/testing-env/2026-05-26.md:6883:6913",
+      "path": "memory/slack-exports/testing-env/2026-05-26.md",
+      "startLine": 6883,
+      "endLine": 6913,
+      "source": "memory",
+      "snippet": "4. :white_check_mark: *What/Why/How/Process/Tickets* - All 5 documents complete ─── *Testbed: All assigned tasks 100% complete. PR ready for review and merge.* *Pieter/Bob: Please review and merge PR #34 when ready.* **23:04 UTC Pieter van der Wal:** Great <@U0APZ3ERHGQ> is the Kanban board ready to deploy to Forge and Mason on the memory work we did today **23:04 UTC BobWebDev:** The Kanban board is almost ready for Forge and Mason deployment on today’s memory/context injection work. *Status:* • Core Implementation Plan tickets (QW/HR/MEM) have been entered, validated, and are driving work for Bob and Testbed. • I am now creating clones of each relevant tick",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-06-23T19:57:54.415Z",
+      "lastRecalledAt": "2026-06-23T19:57:54.415Z",
+      "queryHashes": [
+        "f158f75cccc1"
+      ],
+      "recallDays": [
+        "2026-06-23"
+      ],
+      "conceptTags": [
+        "white-check-mark",
+        "what/why/how/process/tickets",
+        "pieter/bob",
+        "memory/context",
+        "qw/hr/mem",
+        "what",
+        "why",
+        "how"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-05-26.md:6907:6948": {
+      "key": "memory:memory/slack-exports/testing-env/2026-05-26.md:6907:6948",
+      "path": "memory/slack-exports/testing-env/2026-05-26.md",
+      "startLine": 6907,
+      "endLine": 6948,
+      "source": "memory",
+      "snippet": "• Finalize and assign all Forge/Mason tickets for the “Agent Slack Memory Config” set in Project 7 • Link/label the “Forge” and “Mason” ticket subsets for easy tracking • Post the final links here for your review and sign-off *ETA:* First tickets for Forge and Mason will be visible on the board within the next few minutes. The full set ready for execution will be confirmed back here promptly. If you have agent-specific customizations for Forge/Mason, let me know before the final tickets are pushed. Otherwise, they will mirror the proven Bob/Testbed pattern. **23:04 UTC Testbed:** *Testbed: Acknowledged. Pieter is asking Bob about Kanban board readiness for Forge and Mason de",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-06-23T19:57:54.415Z",
+      "lastRecalledAt": "2026-06-23T19:57:54.415Z",
+      "queryHashes": [
+        "f158f75cccc1"
+      ],
+      "recallDays": [
+        "2026-06-23"
+      ],
+      "conceptTags": [
+        "forge/mason",
+        "link/label",
+        "sign-off",
+        "agent-specific",
+        "bob/testbed",
+        "finalize",
+        "assign",
+        "all"
       ]
     }
   }
