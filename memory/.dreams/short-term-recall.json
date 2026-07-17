@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-23T19:57:54.415Z",
+  "updatedAt": "2026-07-17T16:05:20.650Z",
   "entries": {
     "memory:memory/slack-exports/testing-env/2026-05-16.md:295:335": {
       "key": "memory:memory/slack-exports/testing-env/2026-05-16.md:295:335",
@@ -3051,6 +3051,192 @@
         "finalize",
         "assign",
         "all"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-07-15.md:1867:1890": {
+      "key": "memory:memory/slack-exports/testing-env/2026-07-15.md:1867:1890",
+      "path": "memory/slack-exports/testing-env/2026-07-15.md",
+      "startLine": 1867,
+      "endLine": 1890,
+      "source": "memory",
+      "snippet": "**19:16 UTC Testbed:** *:white_check_mark: honcho-m1 palace now has 17,846 embeddings!* *Phase 7: Update Bob's OpenClaw config to point to honcho-m1* **19:16 UTC Testbed:** Lobstering... :hammer_and_wrench: ssh -i /tmp/bob\\_ssh\\_key pieter@100.126.243.57 \"grep -A 10 'mempalace' \\~/.openclaw/openclaw.json | head -15\" :hammer_and_wrench: completed; command ssh -i /tmp/bob\\_ssh\\_key…7 \"grep -A 10 'mempalace' \\~/.openclaw/openclaw.json | head -15\" **19:17 UTC Testbed:** Lobstering... :hammer_and_wrench: run ssh /tmp/bob\\_ssh\\_key → show /tmp/bob-openclaw.json -&gt; search \"mempalace\" :hammer_and_wrench: exit 1; command run ssh /tmp/bob\\_ssh\\_key → show /tmp/bob-openclaw.json -&gt;",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-07-17T16:05:20.650Z",
+      "lastRecalledAt": "2026-07-17T16:05:20.650Z",
+      "queryHashes": [
+        "85eb4df5dcf9"
+      ],
+      "recallDays": [
+        "2026-07-17"
+      ],
+      "conceptTags": [
+        "embedding",
+        "embeddings",
+        "white-check-mark",
+        "honcho-m1",
+        "hammer-and-wrench",
+        "tmp/bob",
+        "100.126.243.57",
+        "openclaw/openclaw.json"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-07-15.md:1886:1907": {
+      "key": "memory:memory/slack-exports/testing-env/2026-07-15.md:1886:1907",
+      "path": "memory/slack-exports/testing-env/2026-07-15.md",
+      "startLine": 1886,
+      "endLine": 1907,
+      "source": "memory",
+      "snippet": ":hammer_and_wrench: scp /tmp/bob-openclaw-updated.json…\\~/.openclaw/openclaw.json.new &amp;&amp; ssh -i /tmp/bob\\_ssh\\_key piete… :hammer_and_wrench: Exec :hammer_and_wrench: scp /tmp/bob-openclaw-updated.json…\\~/.openclaw/openclaw.json.new &amp;&amp; ssh -i /tmp/bob\\_ssh\\_key piete… :hammer_and_wrench: Exec :hammer_and_wrench: scp /tmp/bob-openclaw-updated.json…\\~/.openclaw/openclaw.json.new &amp;&amp; ssh -i /tmp/bob\\_ssh\\_key piete… :hammer_and_wrench: exit 255; command scp…\\~/.openclaw/openclaw.json.new &amp;&amp; ssh -i /tmp/bob\\_ssh\\_key piete… **19:17 UTC Testbed:** Lobstering... :hammer_and_wrench: scp -i /tmp/bob\\_ssh\\_key…eter@100.126.243.57:\\~/.openclaw/openclaw.json.",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-07-17T16:05:20.650Z",
+      "lastRecalledAt": "2026-07-17T16:05:20.650Z",
+      "queryHashes": [
+        "85eb4df5dcf9"
+      ],
+      "recallDays": [
+        "2026-07-17"
+      ],
+      "conceptTags": [
+        "hammer-and-wrench",
+        "tmp/bob-openclaw-updated.json",
+        "openclaw/openclaw.json.new",
+        "tmp/bob",
+        "100.126.243.57",
+        "openclaw/openclaw.json",
+        "scp",
+        "tmp"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-07-15.md:1216:1237": {
+      "key": "memory:memory/slack-exports/testing-env/2026-07-15.md:1216:1237",
+      "path": "memory/slack-exports/testing-env/2026-07-15.md",
+      "startLine": 1216,
+      "endLine": 1237,
+      "source": "memory",
+      "snippet": "Ready to start Bob's MemPalace migration when you are. First step: locate and backup Bob's local MemPalace database. **18:03 UTC Pieter van der Wal:** start looking .....but make No Changes..... i still have to back Bob Up **18:03 UTC Testbed:** Acknowledged — **reconnaissance only, NO changes to Bob.** Starting investigation of Bob's MemPalace data location and size. **18:03 UTC Testbed:** Lobstering... :hammer_and_wrench: ssh -i /tmp/bob\\_ssh\\_key pieter@100.94.9.125 \"find \\~…f \\\\( -name '\\*.palace' -o -name '\\*mempalace\\*.db' -o -name '\\*me… :hammer_and_wrench: completed; command ssh -i /tmp/bob\\_ssh\\_key…f \\\\( -name '\\*.palace' -o -name '\\*mempalace\\*.db' -o -name '\\*me… **1",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-07-17T16:05:20.650Z",
+      "lastRecalledAt": "2026-07-17T16:05:20.650Z",
+      "queryHashes": [
+        "85eb4df5dcf9"
+      ],
+      "recallDays": [
+        "2026-07-17"
+      ],
+      "conceptTags": [
+        "backup",
+        "hammer-and-wrench",
+        "tmp/bob",
+        "100.94.9.125",
+        "ready",
+        "start",
+        "bob's",
+        "mempalace"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-07-15.md:3161:3188": {
+      "key": "memory:memory/slack-exports/testing-env/2026-07-15.md:3161:3188",
+      "path": "memory/slack-exports/testing-env/2026-07-15.md",
+      "startLine": 3161,
+      "endLine": 3188,
+      "source": "memory",
+      "snippet": ":hammer_and_wrench: completed; command ssh -i /tmp/bob\\_ssh\\_key…26.243.57 \"pip3 install honcho-ai --break-system-packages 2&gt;&amp;1\" **20:11 UTC Testbed:** **:white_check_mark: Acknowledged — continuing deployment.** **Bob already has honcho-ai SDK installed. Testing health check:** **20:11 UTC Testbed:** **:white_check_mark: Bob: Honcho integration working!** --- ## Step 2: Deploy to Mason **20:11 UTC Testbed:** Lobstering... :hammer_and_wrench: run scp /tmp/bob\\_ssh\\_key → print text :hammer_and_wrench: Exec :hammer_and_wrench: run scp /tmp/bob\\_ssh\\_key → print text :hammer_and_wrench: completed; command run scp /tmp/bob\\_ssh\\_key → print text **20:11 UTC Tes",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-07-17T16:05:20.650Z",
+      "lastRecalledAt": "2026-07-17T16:05:20.650Z",
+      "queryHashes": [
+        "85eb4df5dcf9"
+      ],
+      "recallDays": [
+        "2026-07-17"
+      ],
+      "conceptTags": [
+        "hammer-and-wrench",
+        "tmp/bob",
+        "26.243.57",
+        "honcho-ai",
+        "break-system-packages",
+        "white-check-mark",
+        "completed",
+        "command"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-06-19.md:337:372": {
+      "key": "memory:memory/slack-exports/testing-env/2026-06-19.md:337:372",
+      "path": "memory/slack-exports/testing-env/2026-06-19.md",
+      "startLine": 337,
+      "endLine": 372,
+      "source": "memory",
+      "snippet": "**19:20 UTC Pieter van der Wal:** <@U0APZ3ERHGQ> Testbed not mason **19:20 UTC BobWebDev:** Got Mason's new public key. Now let me add it to honcho-m1's `authorized_keys`: **19:20 UTC BobWebDev:** Now verify Mason can actually SSH in: **19:20 UTC BobWebDev:** All done. Here's what happened: _Mason → honcho-m1 SSH access: :white_check_mark:_ 1. _Generated_ a fresh `ed25519` keypair for Mason on mason-m1 (no key existed there before) 2. _Added_ Mason's public key (`mason@mason-m1`) to honcho-m1's `~/.ssh/authorized_keys` 3. _Verified_ — Mason can SSH into honcho-m1 successfully honcho-m1 `authorized_keys` now has 3 keys: • `pieter@windows` (Ascendancy provisioning ke",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-07-17T16:05:20.650Z",
+      "lastRecalledAt": "2026-07-17T16:05:20.650Z",
+      "queryHashes": [
+        "85eb4df5dcf9"
+      ],
+      "recallDays": [
+        "2026-07-17"
+      ],
+      "conceptTags": [
+        "honcho-m1",
+        "authorized-keys",
+        "white-check-mark",
+        "mason-m1",
+        "ssh/authorized-keys",
+        "utc",
+        "pieter",
+        "van"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-06-19.md:321:347": {
+      "key": "memory:memory/slack-exports/testing-env/2026-06-19.md:321:347",
+      "path": "memory/slack-exports/testing-env/2026-06-19.md",
+      "startLine": 321,
+      "endLine": 347,
+      "source": "memory",
+      "snippet": "**19:19 UTC BobWebDev:** No existing Mason SSH key in memory. Let me get Mason's actual public key from their machine or 1Password. **19:19 UTC BobWebDev:** That's *my* key (bobwebdev-m1). I need Mason's key — he's on a different machine. Let me check if Mason has a key in 1Password or if I can get it from his machine directly. **19:19 UTC BobWebDev:** There's a `Mason-M1 — SSH Access (PRIMARY RECOVERY)` item in 1Password. Let me pull Mason's public key from there. **19:19 UTC BobWebDev:** Good — Mason's machine is at `100.117.192.71` on Tailscale. The authorized_keys note doesn't include Mason's own public key, which makes sense since there's no keypair on that machine. The request is to",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-07-17T16:05:20.650Z",
+      "lastRecalledAt": "2026-07-17T16:05:20.650Z",
+      "queryHashes": [
+        "85eb4df5dcf9"
+      ],
+      "recallDays": [
+        "2026-07-17"
+      ],
+      "conceptTags": [
+        "bobwebdev-m1",
+        "mason-m1",
+        "100.117.192.71",
+        "authorized-keys",
+        "utc",
+        "bobwebdev",
+        "existing",
+        "mason"
       ]
     }
   }
