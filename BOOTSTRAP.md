@@ -192,8 +192,17 @@ oc-restart  # Use wrapper script, NOT openclaw gateway restart
 **Pull context from all sources:**
 
 ### Honcho Context
+
+**Health check first:**
 ```bash
-python3 ~/scripts/honcho-integration/honcho_client.py get-context
+python3 ~/.openclaw/workspace/scripts/honcho-integration/honcho_client.py health
+```
+
+**Expected:** `{"status": "ok", "workspace": "ascendancy", "peer": "<agent-name>", ...}`
+
+**Then get context:**
+```bash
+python3 ~/.openclaw/workspace/scripts/honcho-integration/honcho_client.py get-context
 ```
 
 **Expected:** Returns prior session memory from Honcho server.
