@@ -57,6 +57,7 @@ This is intentional: proven approaches and scripts here are available for Bob, M
 - Read SOUL.md every session
 - Read GOVERNANCE.md every session — fully
 - No rollback plan = no destructive test. Period.
+- **HETZNER SNAPSHOT RULE (2026-07-20):** Never proceed with ANY infrastructure changes (upgrades, migrations, config edits, destructive operations) until you validate the snapshot exists via Hetzner API. No exceptions. Snapshot first, validate existence, THEN proceed.
 - RTFM First: search docs.openclaw.ai / clawdocs.org / openclaw.im/docs / github.com/openclaw/openclaw before ANY system/config/JSON change. No exceptions.
 - Never touch production systems — you are testbed, stay there
 - Document every test result — pass OR fail
@@ -152,3 +153,87 @@ Before anything else:
    - Re-run bootstrap after resolving issue
 
 **This rule cannot be bypassed. Every session. No exceptions.**
+
+## Hetzner Infrastructure Management (NEW - 2026-07-20)
+
+**Testbed has Hetzner API access for automated snapshots and server management.**
+
+### Snapshot Naming Convention (MANDATORY)
+
+**Pre-work snapshots:**
+```
+pre-{work-description}-{YYYY-MM-DD-HHMM}
+```
+
+**Post-work snapshots:**
+```
+post-{work-description}-{YYYY-MM-DD-HHMM}
+```
+
+**Examples:**
+- `pre-mempalace-upgrade-2026-07-20-1058`
+- `post-mempalace-upgrade-2026-07-20-1145`
+- `pre-honcho-postgres-migration-2026-07-21-0900`
+- `post-honcho-postgres-migration-2026-07-21-1030`
+
+### Snapshot Validation Procedure
+
+**Before ANY infrastructure change:**
+
+1. **Create snapshot** via Hetzner API (or confirm Pieter created one manually)
+2. **Validate snapshot exists** via Hetzner API `GET /snapshots`
+3. **Log snapshot ID and name** in daily note
+4. **ONLY THEN proceed** with the work
+
+**After successful change:**
+
+1. **Create post-work snapshot** via Hetzner API
+2. **Validate it exists**
+3. **Document both snapshots** in daily note + HANDOFF.md
+
+### Hetzner API Access
+
+**Credentials:** 1Password AgentStack vault → "Hetzner API" (ID: 2jgihjh72us47cyzmna3tsuvla)
+**Field:** `credential`
+**API Base:** `https://api.hetzner.cloud/v1/`
+
+**Key endpoints:**
+- `GET /servers` — list all servers
+- `POST /servers/{id}/actions/create_image` — create snapshot
+- `GET /images` — list snapshots (type=snapshot)
+- `DELETE /images/{id}` — delete snapshot
+
+**Authentication:**
+```bash
+curl -H "Authorization: Bearer $HETZNER_TOKEN" https://api.hetzner.cloud/v1/servers
+```
+
+### Servers Under Management
+
+| Server | Name | Tailscale IP | Hetzner ID | Purpose |
+|--------|------|--------------|------------|---------|
+| honcho-m1 | honcho-m1 | 100.77.0.47 | TBD | MemPalace + Honcho + Dropbox MCP |
+| testbed-m1 | testbed-m1 | 100.94.9.125 | TBD | Infrastructure testing |
+
+*Server IDs to be populated after first API query.*
+
+### Rollback Procedure
+
+**If upgrade/migration fails:**
+
+1. **Stop services immediately**
+2. **Do NOT attempt fixes** — rollback first, diagnose second
+3. **Restore from pre-work snapshot** via Hetzner console (Pieter) or API
+4. **Validate restore successful**
+5. **Document failure** in daily note + incident report
+6. **Alert Pieter immediately**
+
+### Hard Rule Enforcement
+
+**Any attempt to proceed with infrastructure changes without validated snapshot = STOP and alert Pieter.**
+
+This rule exists because:
+- 2026-05-20/21: Bob lost SOUL.md, reverted to vanilla (no backup)
+- Infrastructure changes are destructive and irreversible without snapshots
+- Testbed exists to prevent production disasters — snapshots are the safety net
+
