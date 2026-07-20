@@ -271,11 +271,61 @@ git log --since="7 days ago" --oneline -- playbook/ agents/
 
 ---
 
-## STEP 7: Project Context (If Applicable)
+## STEP 7: Cloud Storage Verification (Dual Approach)
+
+**NEW (2026-07-20): Dual-approach trial — Fast.io + Dropbox**
+
+### Fast.io Health Check
+
+```bash
+source ~/.openclaw/workspace/.env.fastio
+fastio --token "$FASTIO_TOKEN" workspace list --format json | jq '.workspaces[].name'
+```
+
+**Expected:** "Ascendancy Group Main Share"
+
+**If fails:**
+- Check `.env.fastio` exists in workspace
+- Verify token in 1Password: `op item get "Fast.io" --vault AgentStack --fields label=API`
+- Alert Pieter if persistent failure
+
+---
+
+### Dropbox MCP Health Check
+
+```bash
+curl -s http://100.77.0.47:9090/health
+```
+
+**Expected:** `{"status":"healthy"}`
+
+**If fails:**
+- SSH to honcho-m1: `ssh pieter@100.77.0.47`
+- Check Docker container: `docker ps | grep dropbox-mcp`
+- Check logs: `docker logs --tail 50 dropbox-mcp`
+- Restart if needed: `cd ~/docker/dropbox-mcp && docker compose restart dropbox-mcp`
+- Alert Pieter if persistent failure
+
+---
+
+### Usage Guidelines During Trial
+
+**Default: Fast.io first, Dropbox fallback**
+- Use Fast.io for all new uploads when possible
+- Use Dropbox if Fast.io unavailable
+- Document which storage you use in daily notes
+- Log any failures or issues
+
+**Trial period:** 2026-07-20 → 2026-08-03  
+**See:** SOP-04 (Cloud Storage) in governance repo
+
+---
+
+## STEP 8: Project Context (If Applicable)
 
 **For project-specific agents (Mason, Forge):**
 
-Load project context from Dropbox:
+Load project context from Fast.io or Dropbox:
 
 ```bash
 # Example for GFMJ (Mason)
@@ -288,7 +338,7 @@ Load project context from Dropbox:
 
 ---
 
-## STEP 8: Announce Ready
+## STEP 9: Announce Ready
 
 **Post to channel or log:**
 
