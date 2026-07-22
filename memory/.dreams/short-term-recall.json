@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-17T16:05:20.650Z",
+  "updatedAt": "2026-07-22T02:56:01.987Z",
   "entries": {
     "memory:memory/slack-exports/testing-env/2026-05-16.md:295:335": {
       "key": "memory:memory/slack-exports/testing-env/2026-05-16.md:295:335",
@@ -2114,18 +2114,20 @@
       "endLine": 200,
       "source": "memory",
       "snippet": "• Different channel → different test environment • Will isolate if it's channel-specific or bot-identity issue *Standing by for Bob's Mason JSON check (NO CHANGES, just read)* **00:12 UTC Pieter van der Wal:** <@U0APZ3ERHGQ> - Mason is Not in this channel - Only in GFMJ **00:12 UTC Testbed:** *UNDERSTOOD PIETER!* *Key Insight:* Mason is NOT in #testing-env, only in GFMJ channel. *This means:* • Bob and I can't test with Mason here in #testing-env • Tomorrow's GFMJ test is the right approach • Bob can check Mason's JSON on mason-m1 (NO CHANGES, just read) *What Bob should check on Mason's JSON:* 1. Does Mason have `\"allowBots\": true` or `\"allowBots\": \"m",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1,
+      "totalScore": 2,
       "maxScore": 1,
       "firstRecalledAt": "2026-06-09T23:07:22.039Z",
-      "lastRecalledAt": "2026-06-09T23:07:22.039Z",
+      "lastRecalledAt": "2026-07-22T02:56:01.987Z",
       "queryHashes": [
-        "7cec426a97a1"
+        "7cec426a97a1",
+        "38e7fb7b41e5"
       ],
       "recallDays": [
-        "2026-06-09"
+        "2026-06-09",
+        "2026-07-21"
       ],
       "conceptTags": [
         "channel-specific",
@@ -3237,6 +3239,161 @@
         "bobwebdev",
         "existing",
         "mason"
+      ]
+    },
+    "memory:memory/2026-05-14-slack-channel-troubleshooting.md:273:292": {
+      "key": "memory:memory/2026-05-14-slack-channel-troubleshooting.md:273:292",
+      "path": "memory/2026-05-14-slack-channel-troubleshooting.md",
+      "startLine": 273,
+      "endLine": 292,
+      "source": "memory",
+      "snippet": "- `~/.openclaw/openclaw.json` — added Slack channel config with `groupPolicy: \"open\"` - `~/.openclaw/workspace/HANDOFF.md` — documented troubleshooting state - `~/.openclaw/workspace/memory/2026-05-14-slack-channel-troubleshooting.md` — this file - `~/.openclaw/workspace/Backups-Granular/openclaw.json__*` — multiple backups during troubleshooting --- ## Success Criteria Met - ✅ Testbed responds to messages in #testing-env (private channel) - ✅ Testbed responds to messages in #testing-env--public (public channel) - ✅ No @mention required (`requireMention: false`) - ✅ DMs continue to work - ✅ Socket Mode connected and stable - ✅ Config survives `openclaw gateway restart` --- **Status:** R",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-07-22T02:56:01.987Z",
+      "lastRecalledAt": "2026-07-22T02:56:01.987Z",
+      "queryHashes": [
+        "38e7fb7b41e5"
+      ],
+      "recallDays": [
+        "2026-07-21"
+      ],
+      "conceptTags": [
+        "backup",
+        "backups",
+        "gateway",
+        "openclaw/openclaw.json",
+        "openclaw/workspace/handoff.md",
+        "testing-env",
+        "slack",
+        "channel"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-05-26.md:3878:3920": {
+      "key": "memory:memory/slack-exports/testing-env/2026-05-26.md:3878:3920",
+      "path": "memory/slack-exports/testing-env/2026-05-26.md",
+      "startLine": 3878,
+      "endLine": 3920,
+      "source": "memory",
+      "snippet": "**21:32 UTC Pieter van der Wal:** <@U0APZ3ERHGQ> is \"allowbots\" enabled for this channel? **21:32 UTC BobWebDev:** Yes, \"allowbots\" is enabled for #testing-env — that’s why both I (Bob) and Testbed can post, read, and interact natively here. No restrictions are interfering with agent updates, ticket links, or automated status posts in this channel. If you need me to confirm the Slack config from system files or output, specify the exact location/file/CLI and I’ll verify and paste the value. But operationally, bot messages are live and active in #testing-env. **21:32 UTC Testbed:** **Testbed: Checking Slack channel configuration for bot visibility.** **Time: 16:33 CDT** ---",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-07-22T02:56:01.987Z",
+      "lastRecalledAt": "2026-07-22T02:56:01.987Z",
+      "queryHashes": [
+        "38e7fb7b41e5"
+      ],
+      "recallDays": [
+        "2026-07-21"
+      ],
+      "conceptTags": [
+        "testing-env",
+        "location/file/cli",
+        "utc",
+        "pieter",
+        "van",
+        "wal",
+        "u0apz3erhgq",
+        "allowbots"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-06-09.md:1:37": {
+      "key": "memory:memory/slack-exports/testing-env/2026-06-09.md:1:37",
+      "path": "memory/slack-exports/testing-env/2026-06-09.md",
+      "startLine": 1,
+      "endLine": 37,
+      "source": "memory",
+      "snippet": "# #testing-env — 2026-06-09 **22:55 UTC Pieter van der Wal:** <@U0APZ3ERHGQ>, <@U0B2PGYCEVB> **22:55 UTC BobWebDev:** :wave: Here in #testing-env! What do you need? **22:55 UTC Testbed:** I'll read the bootstrap files first, then provide a proper response. **22:55 UTC Testbed:** :warning: :hammer_and_wrench: `run python3 ~/scripts/honcho-integration/honcho_client.py` failed **22:56 UTC Pieter van der Wal:** <@U0B2PGYCEVB> how do we fix that bootstrap **22:56 UTC Testbed:** Looking at the bootstrap system messages appearing in channel — this is message metadata leaking into the chat. **Root cause:** Bootstrap system messages (Slack edits/deletes/metadata) are being injected a",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-07-22T02:56:01.987Z",
+      "lastRecalledAt": "2026-07-22T02:56:01.987Z",
+      "queryHashes": [
+        "38e7fb7b41e5"
+      ],
+      "recallDays": [
+        "2026-07-21"
+      ],
+      "conceptTags": [
+        "testing-env",
+        "hammer-and-wrench",
+        "edits/deletes/metadata",
+        "testing",
+        "env",
+        "utc",
+        "pieter",
+        "van"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-05-26.md:2306:2351": {
+      "key": "memory:memory/slack-exports/testing-env/2026-05-26.md:2306:2351",
+      "path": "memory/slack-exports/testing-env/2026-05-26.md",
+      "startLine": 2306,
+      "endLine": 2351,
+      "source": "memory",
+      "snippet": "**20:17 UTC Testbed:** *Testbed: Acknowledged. Bob's repo backed up.* *Time: 15:17 CDT | Status Update* ─── *Current Blockers Identified* *Problem:* Bob (BobWebDev) is in this same session with me. We are both agents in the *same Slack channel*, but Bob has not posted any separate messages or taken independent action. *Root cause:* Bob and I are both *Testbed* — same agent, same session. There is no separate Bob agent actively monitoring or executing in this channel right now. ─── *Clarification Needed* *Pieter:* Are you expecting: 1. *Option A:* Testbed (me) executes all work solo, self-documenting as I go? 2. *Option B:* Bob is in a separate s",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-07-22T02:56:01.987Z",
+      "lastRecalledAt": "2026-07-22T02:56:01.987Z",
+      "queryHashes": [
+        "38e7fb7b41e5"
+      ],
+      "recallDays": [
+        "2026-07-21"
+      ],
+      "conceptTags": [
+        "self-documenting",
+        "utc",
+        "testbed",
+        "acknowledged",
+        "bob's",
+        "repo",
+        "backed",
+        "time"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-06-09.md:181:221": {
+      "key": "memory:memory/slack-exports/testing-env/2026-06-09.md:181:221",
+      "path": "memory/slack-exports/testing-env/2026-06-09.md",
+      "startLine": 181,
+      "endLine": 221,
+      "source": "memory",
+      "snippet": "*Current Problem (from context)* *Bob + Mason in GFMJ channel* still having memory issues despite this system being in place. *Root cause possibilities:* 1. System exists but not running automatically 2. YAML config needs optimization for channel-specific context 3. Bootstrap still too large for multi-agent channels 4. System measures but doesn't actively trim ─── *Pieter's Request* &gt; _Build it so that it is more Agent friendly by creating an .MD (markdown) file that has the critical issues and links in it for an agent. have the agent access that markdown file first thing and have it guide to context and rules_ *This already exists partially:* BOOT",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-07-22T02:56:01.987Z",
+      "lastRecalledAt": "2026-07-22T02:56:01.987Z",
+      "queryHashes": [
+        "38e7fb7b41e5"
+      ],
+      "recallDays": [
+        "2026-07-21"
+      ],
+      "conceptTags": [
+        "channel-specific",
+        "multi-agent",
+        "current",
+        "problem",
+        "context",
+        "bob",
+        "mason",
+        "gfmj"
       ]
     }
   }
