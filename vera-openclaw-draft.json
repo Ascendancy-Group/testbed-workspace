@@ -1,0 +1,102 @@
+{
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "github-copilot/gpt-4.1-mini",
+        "fallbacks": [
+          "github-copilot/claude-haiku-4.5",
+          "github-copilot/gpt-4.1"
+        ]
+      },
+      "bootstrapMaxChars": 15000,
+      "bootstrapTotalMaxChars": 60000,
+      "compaction": {
+        "mode": "safeguard",
+        "reserveTokensFloor": "REDACTED"
+      },
+      "heartbeat": {
+        "every": "1h",
+        "model": "github-copilot/gpt-4.1-mini"
+      }
+    }
+  },
+  "plugins": {
+    "entries": {
+      "slack": {
+        "enabled": true
+      },
+      "github-copilot": {
+        "enabled": true,
+        "config": {
+          "apiKey": "REDACTED"
+        }
+      }
+    }
+  },
+  "gateway": {
+    "auth": {
+      "mode": "token",
+      "token": "REDACTED"
+    },
+    "mode": "local"
+  },
+  "channels": {
+    "slack": {
+      "botToken": "REDACTED",
+      "appToken": "REDACTED",
+      "enabled": true,
+      "groupPolicy": "open",
+      "channels": {
+        "CHANNEL_ID_UAT_TESTING": {
+          "enabled": true,
+          "requireMention": false,
+          "allowBots": true
+        },
+        "CHANNEL_ID_GOFINDMYJOB": {
+          "enabled": true,
+          "requireMention": false,
+          "allowBots": true
+        },
+        "C0B1WLM3P8X": {
+          "enabled": true,
+          "requireMention": true,
+          "allowBots": true
+        }
+      }
+    }
+  },
+  "commands": {
+    "ownerAllowFrom": [
+      "slack:U0ANQ79KGAV",
+      "slack:U0AN4UEHAG3",
+      "slack:U0APZ3ERHGQ",
+      "slack:U0B2PGYCEVB"
+    ]
+  },
+  "mcp": {
+    "servers": {
+      "dropbox": {
+        "url": "http://100.77.0.47:3001/sse/",
+        "headers": {
+          "x-api-key": "REDACTED"
+        }
+      },
+      "mempalace": {
+        "command": "ssh",
+        "args": [
+          "pieter@100.77.0.47",
+          "python3",
+          "-m",
+          "mempalace.mcp_server",
+          "--palace",
+          "/opt/mempalace"
+        ]
+      }
+    }
+  },
+  "skills": {
+    "entries": {
+      "1password": "REDACTED"
+    }
+  }
+}
