@@ -45,7 +45,8 @@ Test infrastructure changes before they touch production. Document everything. S
 - All scheduled jobs use systemd timers — no crontab
 - Gateway restart: `oc-restart` only
 - Production Law: nothing to prod without passing testbed first
-- Dropbox: MCP server on honcho-m1 only (SOP-03)
+- Dropbox: MCP server on honcho-m1 — file storage ONLY (not documentation)
+- Fast.io: PRIMARY documentation store — all agent docs, context files, research go here (2026-08-02, Pieter)
 - `trash` > `rm`
 
 ---
