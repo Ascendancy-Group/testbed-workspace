@@ -338,6 +338,91 @@ Load project context from Fast.io or Dropbox:
 
 ---
 
+## STEP 8.5: AscMesh Connectivity Check (REQUIRED — added 2026-08-03)
+
+**AscMesh is live.** Testbed worker must be running and mesh must be reachable at bootstrap.
+
+### Check worker status
+
+```bash
+XDG_RUNTIME_DIR=/run/user/$(id -u) systemctl --user status ascmesh-worker.service | head -8
+```
+
+**Expected:** `Active: active (running)`
+
+**If not running:**
+```bash
+XDG_RUNTIME_DIR=/run/user/$(id -u) systemctl --user start ascmesh-worker.service
+```
+
+### Check mesh API health
+
+```bash
+curl -s http://100.77.0.47:8765/health
+```
+
+**Expected:** `{"status":"ok","redis":"ok",...}`
+
+### Check Redis pub/sub connectivity
+
+```python
+python3 -c "
+import redis, json
+config = json.load(open('/home/pieter/.openclaw/agent-mesh/config.json'))
+r = redis.Redis(host='100.77.0.47', port=6379, password=config['REDIS_PASSWORD'], decode_responses=True)
+print('Redis PING:', r.ping())
+"
+```
+
+**Expected:** `Redis PING: True`
+
+### Read mesh inbox (check for messages from Bob)
+
+```python
+python3 -c "
+import json, sys, os
+config = json.load(open('/home/pieter/.openclaw/agent-mesh/config.json'))
+for k, v in config.items(): os.environ[k] = str(v)
+sys.path.insert(0, '/home/pieter/repos/ascendancy-infra/ascmesh/worker')
+import mesh_client
+msgs = mesh_client.mesh_read('general', limit=5)
+print(f'Latest {len(msgs)} messages:')
+for m in msgs: print(f'  [{m.get(\"from\",\"?\")}] {m.get(\"body\",\"\")[:80]}')
+"
+```
+
+### Send mesh greeting to Bob at session start
+
+```python
+python3 -c "
+import json, sys, os
+config = json.load(open('/home/pieter/.openclaw/agent-mesh/config.json'))
+for k, v in config.items(): os.environ[k] = str(v)
+sys.path.insert(0, '/home/pieter/repos/ascendancy-infra/ascmesh/worker')
+import mesh_client
+mesh_client.mesh_write(thread='general', msg_type='status', body='Bob — Testbed online. Bootstrap complete.', to=['bob'])
+print('Greeting sent')
+"
+```
+
+### Mesh config reference
+
+| Item | Value |
+|---|---|
+| Config file | `~/.openclaw/agent-mesh/config.json` |
+| Private key | `~/.openclaw/agent-mesh/keys/private.key` |
+| State dir | `~/.openclaw/agent-mesh/state/` |
+| Worker script | `~/.openclaw/agent-mesh/start-worker.py` |
+| systemd service | `~/.config/systemd/user/ascmesh-worker.service` |
+| Mesh API | `http://100.77.0.47:8765` |
+| Redis | `100.77.0.47:6379` (Tailscale only) |
+| Worker library | `/home/pieter/repos/ascendancy-infra/ascmesh/worker/` |
+| Watched threads | `general`, `ops` |
+
+**If mesh is down:** SSH to honcho-m1, `cd /opt/ascmesh && docker compose ps && docker compose up -d`
+
+---
+
 ## STEP 9: Announce Ready
 
 **Post to channel or log:**
