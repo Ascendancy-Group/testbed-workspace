@@ -338,9 +338,9 @@ Load project context from Fast.io or Dropbox:
 
 ---
 
-## STEP 8.5: AscMesh Connectivity Check (REQUIRED — added 2026-08-03)
+## STEP 8.5: Tessera-Hive Connectivity Check (REQUIRED — added 2026-08-03, updated 2026-08-04)
 
-**AscMesh is live.** Testbed worker must be running and mesh must be reachable at bootstrap.
+**Tessera-Hive is live.** Testbed worker must be running and mesh must be reachable at bootstrap.
 
 ### Check worker status
 
@@ -383,7 +383,7 @@ python3 -c "
 import json, sys, os
 config = json.load(open('/home/pieter/.openclaw/agent-mesh/config.json'))
 for k, v in config.items(): os.environ[k] = str(v)
-sys.path.insert(0, '/home/pieter/repos/ascendancy-infra/ascmesh/worker')
+sys.path.insert(0, '/home/pieter/repos/ascendancy-infra/tessera/worker')
 import mesh_client
 msgs = mesh_client.mesh_read('general', limit=5)
 print(f'Latest {len(msgs)} messages:')
@@ -398,7 +398,7 @@ python3 -c "
 import json, sys, os
 config = json.load(open('/home/pieter/.openclaw/agent-mesh/config.json'))
 for k, v in config.items(): os.environ[k] = str(v)
-sys.path.insert(0, '/home/pieter/repos/ascendancy-infra/ascmesh/worker')
+sys.path.insert(0, '/home/pieter/repos/ascendancy-infra/tessera/worker')
 import mesh_client
 mesh_client.mesh_write(thread='general', msg_type='status', body='Bob — Testbed online. Bootstrap complete.', to=['bob'])
 print('Greeting sent')
@@ -416,10 +416,10 @@ print('Greeting sent')
 | systemd service | `~/.config/systemd/user/ascmesh-worker.service` |
 | Mesh API | `http://100.77.0.47:8765` |
 | Redis | `100.77.0.47:6379` (Tailscale only) |
-| Worker library | `/home/pieter/repos/ascendancy-infra/ascmesh/worker/` |
+| Worker library | `/home/pieter/repos/ascendancy-infra/tessera/worker/` |
 | Watched threads | `general`, `ops` |
 
-**If mesh is down:** SSH to honcho-m1, `cd /opt/ascmesh && docker compose ps && docker compose up -d`
+**If mesh is down:** SSH to honcho-m1, `cd /opt/tessera && docker compose ps && docker compose up -d`
 
 ---
 
