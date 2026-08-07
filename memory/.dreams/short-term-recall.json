@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-05T19:34:55.807Z",
+  "updatedAt": "2026-08-07T17:50:00.990Z",
   "entries": {
     "memory:memory/slack-exports/testing-env/2026-05-16.md:295:335": {
       "key": "memory:memory/slack-exports/testing-env/2026-05-16.md:295:335",
@@ -3551,6 +3551,68 @@
         "memory.md",
         "user.md",
         "tools.md"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-05-26.md:4158:4206": {
+      "key": "memory:memory/slack-exports/testing-env/2026-05-26.md:4158:4206",
+      "path": "memory/slack-exports/testing-env/2026-05-26.md",
+      "startLine": 4158,
+      "endLine": 4206,
+      "source": "memory",
+      "snippet": "**21:36 UTC Testbed:** **Key format looks correct but still failing. Checking Tailscale IP instead:** **21:36 UTC Testbed:** *Machine is reachable but SSH key not working.* ─── *Blocker Summary* *Cannot SSH to bobwebdev-m1:* • :white_check_mark: Machine reachable via Tailscale (ping works) • :x: SSH key from 1Password has \"error in libcrypto\" • :x: Permission denied with publickey auth *Root cause:* SSH key format issue or wrong key in 1Password ─── *Alternative: Bob Implements Locally* *Pieter: Since I cannot SSH to bobwebdev-m1, recommend:* *Bob runs these commands on his own machine:* ``` # QW-01: Baseline cd ~/.openclaw/workspace",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3553604573011398,
+      "maxScore": 0.3553604573011398,
+      "firstRecalledAt": "2026-08-07T17:50:00.990Z",
+      "lastRecalledAt": "2026-08-07T17:50:00.990Z",
+      "queryHashes": [
+        "4a1758edc6f5"
+      ],
+      "recallDays": [
+        "2026-08-07"
+      ],
+      "conceptTags": [
+        "bobwebdev-m1",
+        "white-check-mark",
+        "qw-01",
+        "openclaw/workspace",
+        "utc",
+        "testbed",
+        "key",
+        "format"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-07-15.md:294:348": {
+      "key": "memory:memory/slack-exports/testing-env/2026-07-15.md:294:348",
+      "path": "memory/slack-exports/testing-env/2026-07-15.md",
+      "startLine": 294,
+      "endLine": 348,
+      "source": "memory",
+      "snippet": "Since I can't SSH directly to forge-m1, I'll guide you through the commands OR you can run them directly. *Option 1 - You run these on forge-m1:* ``` # Stop gateway openclaw gateway stop # Upgrade to latest npm install -g openclaw@latest # Restart gateway openclaw gateway start # Verify version openclaw --version ``` *Option 2 - Grant testbed-m1 SSH access to forge-m1:* • Add testbed-m1's public key to forge-m1's `~/.ssh/authorized_keys` • Then I can run the upgrade remotely Which path? **16:44 UTC Pieter van der Wal:** Again - his SSH Key is in 1PW **16:45 UTC Testbed:** Acknowledged — I'll need you to provide the SSH key details from 1Pa",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.35215654969215393,
+      "maxScore": 0.35215654969215393,
+      "firstRecalledAt": "2026-08-07T17:50:00.990Z",
+      "lastRecalledAt": "2026-08-07T17:50:00.990Z",
+      "queryHashes": [
+        "4a1758edc6f5"
+      ],
+      "recallDays": [
+        "2026-08-07"
+      ],
+      "conceptTags": [
+        "gateway",
+        "forge-m1",
+        "testbed-m1",
+        "ssh/authorized-keys",
+        "can't",
+        "ssh",
+        "directly",
+        "forge"
       ]
     }
   }
