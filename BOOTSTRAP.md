@@ -187,6 +187,20 @@ oc-restart  # Use wrapper script, NOT openclaw gateway restart
 
 ---
 
+## STEP 4.5: Maintenance Check
+
+**Read MAINTENANCE.md — check the active action queue:**
+
+```bash
+cat ~/.openclaw/workspace/MAINTENANCE.md
+```
+
+**Check two things:**
+1. Is today Friday? → No maintenance work today. Period.
+2. Are there 🔴 READY items in the action queue? → Flag to Pieter at session start.
+
+---
+
 ## STEP 5: Memory Sources
 
 **Pull context from all sources:**
