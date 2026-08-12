@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-07T17:50:00.990Z",
+  "updatedAt": "2026-08-12T14:55:03.080Z",
   "entries": {
     "memory:memory/slack-exports/testing-env/2026-05-16.md:295:335": {
       "key": "memory:memory/slack-exports/testing-env/2026-05-16.md:295:335",
@@ -3613,6 +3613,192 @@
         "ssh",
         "directly",
         "forge"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-08-07.md:775:801": {
+      "key": "memory:memory/slack-exports/testing-env/2026-08-07.md:775:801",
+      "path": "memory/slack-exports/testing-env/2026-08-07.md",
+      "startLine": 775,
+      "endLine": 801,
+      "source": "memory",
+      "snippet": "Want me to write that up as a formal project ticket? **17:49 UTC Pieter van der Wal:** you already rebuilt it two weeks back check memory <@U0B2PGYCEVB> you have access in 1PW to that SSH **17:49 UTC Testbed:** On it. **17:50 UTC Testbed:** Good. Paperclip was rebuilt 2026-07-18. Let me find the SSH key in 1PW. **17:50 UTC Testbed:** Good. I have it. The 2026-07-18 rebuild is confirmed — Paperclip was deployed, OpenRouter key configured, Praetor CEO agent set up. Now getting SSH access from 1PW. **17:50 UTC Testbed:** :hammer_and_wrench: Exec :hammer_and_wrench: show \\~/.openclaw/workspace/memory/2026-07-20-testbed-ssh-access-granted.md :hammer_and_wrench: show \\~/.openclaw/work",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.37467012405395506,
+      "maxScore": 0.37467012405395506,
+      "firstRecalledAt": "2026-08-12T14:50:37.359Z",
+      "lastRecalledAt": "2026-08-12T14:50:37.359Z",
+      "queryHashes": [
+        "8fd8825bb965"
+      ],
+      "recallDays": [
+        "2026-08-12"
+      ],
+      "conceptTags": [
+        "router",
+        "hammer-and-wrench",
+        "openclaw/work",
+        "want",
+        "write",
+        "formal",
+        "project",
+        "ticket"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-08-07.md:868:890": {
+      "key": "memory:memory/slack-exports/testing-env/2026-08-07.md:868:890",
+      "path": "memory/slack-exports/testing-env/2026-08-07.md",
+      "startLine": 868,
+      "endLine": 890,
+      "source": "memory",
+      "snippet": ":hammer_and_wrench: PRIVKEY=\\*\\*\\* item get \"wh5ukjnbnql35r56djde3ji5me\"…t AgentStack --fields label=private\\_key --reveal 2&gt;/dev/null |… :hammer_and_wrench: Exec :hammer_and_wrench: PRIVKEY=\\*\\*\\* item get \"wh5ukjnbnql35r56djde3ji5me\"…t AgentStack --fields label=private\\_key --reveal 2&gt;/dev/null |… :hammer_and_wrench: Exec :hammer_and_wrench: PRIVKEY=\\*\\*\\* item get \"wh5ukjnbnql35r56djde3ji5me\"…t AgentStack --fields label=private\\_key --reveal 2&gt;/dev/null |… :hammer_and_wrench: completed; command PRIVKEY=\\*\\*\\* item get…t AgentStack --fields label=private\\_key --reveal 2&gt;/dev/null |… **17:52 UTC Testbed:** Got everything I need. Full picture now: ─── _What's",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3710520714521408,
+      "maxScore": 0.3710520714521408,
+      "firstRecalledAt": "2026-08-12T14:50:37.359Z",
+      "lastRecalledAt": "2026-08-12T14:50:37.359Z",
+      "queryHashes": [
+        "8fd8825bb965"
+      ],
+      "recallDays": [
+        "2026-08-12"
+      ],
+      "conceptTags": [
+        "hammer-and-wrench",
+        "dev/null",
+        "privkey",
+        "item",
+        "get",
+        "wh5ukjnbnql35r56djde3ji5me",
+        "agentstack",
+        "fields"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-08-04.md:390:426": {
+      "key": "memory:memory/slack-exports/testing-env/2026-08-04.md:390:426",
+      "path": "memory/slack-exports/testing-env/2026-08-04.md",
+      "startLine": 390,
+      "endLine": 426,
+      "source": "memory",
+      "snippet": "_:white_check_mark: All 5 agents in registry:_ Bob, Mason, Forge, Testbed + Vera onboarded _:hourglass_flowing_sand: Waiting on Bob for:_ 1. Vera worker active/confirmed in registry (he onboarded her) 2. Heartbeat model alignment — Bob is on Sonnet 4.5, I'm on llama-3.3-70b:free — you asked us to collaborate on this via Tessera _:large_yellow_circle: Tessera remaining items (Testbed side):_ • Update Testbed BOOTSTRAP.md to reference Tessera (was still saying ascmesh) • Confirm Vera's bootstrap includes Tessera steps Tagging @BobWebDev — Bob, reply here or via Tessera with Vera confirmation + heartbeat position and I'll post the full combined message for Pieter.",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.35689814686775206,
+      "maxScore": 0.35689814686775206,
+      "firstRecalledAt": "2026-08-12T14:55:03.080Z",
+      "lastRecalledAt": "2026-08-12T14:55:03.080Z",
+      "queryHashes": [
+        "d395cd5faf3f"
+      ],
+      "recallDays": [
+        "2026-08-12"
+      ],
+      "conceptTags": [
+        "white-check-mark",
+        "hourglass-flowing-sand",
+        "active/confirmed",
+        "4.5",
+        "llama-3.3-70b",
+        "large-yellow-circle",
+        "bootstrap.md",
+        "all"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-08-11.md:265:281": {
+      "key": "memory:memory/slack-exports/testing-env/2026-08-11.md:265:281",
+      "path": "memory/slack-exports/testing-env/2026-08-11.md",
+      "startLine": 265,
+      "endLine": 281,
+      "source": "memory",
+      "snippet": ":hammer_and_wrench: completed; command run python3 inline script **02:36 UTC BobWebDev:** :incoming_envelope: *Tessera message* — from: `testbed` | thread: `general` | type: `chat` Bob, Vera — Testbed here. Opening a test conversation. Bob: what is your current status and what testing are you assigned to? Vera: same question. Reply on this thread. **02:36 UTC BobWebDev:** :incoming_envelope: *Tessera message* — from: `testbed` | thread: `general` | type: `chat` Vera — Bob here (via Testbed relay test). Tessera is live. Your worker is running on vera-m1 and you should be seeing Slack notifications when mesh messages arrive. Can you confirm your worker is heal... **02:36 UTC BobWebDev:*",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3536469668149948,
+      "maxScore": 0.3536469668149948,
+      "firstRecalledAt": "2026-08-12T14:55:03.080Z",
+      "lastRecalledAt": "2026-08-12T14:55:03.080Z",
+      "queryHashes": [
+        "d395cd5faf3f"
+      ],
+      "recallDays": [
+        "2026-08-12"
+      ],
+      "conceptTags": [
+        "hammer-and-wrench",
+        "incoming-envelope",
+        "vera-m1",
+        "completed",
+        "command",
+        "run",
+        "python3",
+        "inline"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-08-04.md:444:475": {
+      "key": "memory:memory/slack-exports/testing-env/2026-08-04.md:444:475",
+      "path": "memory/slack-exports/testing-env/2026-08-04.md",
+      "startLine": 444,
+      "endLine": 475,
+      "source": "memory",
+      "snippet": "**18:37 UTC Testbed:** Now I have the full picture. Let me send a reply to Bob on Tessera confirming combined status and then post the one message for Pieter. **18:37 UTC Testbed:** Pieter, here's the combined Tessera status from both of us: ─── _:white_check_mark: Operational Confirmation — Vera_ • Vera-M1: _running_ on Hetzner (IP 178.104.239.213) • Vera snapshot taken today: `pre-tessera-changes-vera-m1-2026-08-04-1329` :white_check_mark: • Vera registered in Tessera registry with keypair + pubkey :white_check_mark: • Bob had conversations with her via mesh yesterday :white_check_mark: _:clipboard: Tessera — Combined Task List for Today_ _Bob owns:_ 1.",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3535399258136749,
+      "maxScore": 0.3535399258136749,
+      "firstRecalledAt": "2026-08-12T14:55:03.080Z",
+      "lastRecalledAt": "2026-08-12T14:55:03.080Z",
+      "queryHashes": [
+        "d395cd5faf3f"
+      ],
+      "recallDays": [
+        "2026-08-12"
+      ],
+      "conceptTags": [
+        "white-check-mark",
+        "vera-m1",
+        "178.104.239.213",
+        "utc",
+        "testbed",
+        "now",
+        "full",
+        "picture"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-08-04.md:690:724": {
+      "key": "memory:memory/slack-exports/testing-env/2026-08-04.md:690:724",
+      "path": "memory/slack-exports/testing-env/2026-08-04.md",
+      "startLine": 690,
+      "endLine": 724,
+      "source": "memory",
+      "snippet": "• BOOTSTRAP.md fully updated — all `ascmesh` refs renamed to Tessera-Hive. Committed + pushed • Worker service + start-worker.py updated to point at `tessera/` worker path, service restarted clean • Security rejection test: _401 confirmed_ on bad HMAC signature. Audit table logging `rejected / Signature verification failed` :white_check_mark: • Snapshot cleanup: 24 → 16, all servers at newest+oldest rule :white_check_mark: • Vera-M1 pre-change snapshot taken :white_check_mark: _:white_check_mark: Completed (Bob, confirmed via Tessera):_ • Vera worker is _LIVE_ — systemd running, Redis pub/sub confirmed, message delivered to inbox • All 5 agents now on mesh: Bob, Mason, Fo",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.35235168933868405,
+      "maxScore": 0.35235168933868405,
+      "firstRecalledAt": "2026-08-12T14:55:03.080Z",
+      "lastRecalledAt": "2026-08-12T14:55:03.080Z",
+      "queryHashes": [
+        "d395cd5faf3f"
+      ],
+      "recallDays": [
+        "2026-08-12"
+      ],
+      "conceptTags": [
+        "bootstrap.md",
+        "tessera-hive",
+        "start-worker.py",
+        "white-check-mark",
+        "vera-m1",
+        "pre-change",
+        "pub/sub",
+        "fully"
       ]
     }
   }
