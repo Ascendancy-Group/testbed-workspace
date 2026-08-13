@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-12T14:55:03.080Z",
+  "updatedAt": "2026-08-13T12:56:55.698Z",
   "entries": {
     "memory:memory/slack-exports/testing-env/2026-05-16.md:295:335": {
       "key": "memory:memory/slack-exports/testing-env/2026-05-16.md:295:335",
@@ -3799,6 +3799,192 @@
         "pre-change",
         "pub/sub",
         "fully"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-07-15.md:927:941": {
+      "key": "memory:memory/slack-exports/testing-env/2026-07-15.md:927:941",
+      "path": "memory/slack-exports/testing-env/2026-07-15.md",
+      "startLine": 927,
+      "endLine": 941,
+      "source": "memory",
+      "snippet": "github-copilot or openclaw configure. (Copilot token exchange failed: HTTP 404) (auth) | github-copilot/gemini-2.5-pro: Couldn't sign in to github-copilot. Your saved login looks expired or no longer works. Run openclaw models auth login --provider github-copilot or openclaw configure. (Copilot token exchange failed: HTTP 404) (auth) | github-copilot/claude-haiku-4.5: Couldn't sign in to github-copilot. Your saved login looks expired or no longer works. Run openclaw models auth login --provider github-copilot or openclaw configure. (Copilot token exchange failed: HTTP 404) (auth) | github-copilot/gpt-5.4-mini: Couldn't sign in to github-copilot. Your saved login looks expired or no lon",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.38940731883049007,
+      "maxScore": 0.38940731883049007,
+      "firstRecalledAt": "2026-08-13T12:56:55.698Z",
+      "lastRecalledAt": "2026-08-13T12:56:55.698Z",
+      "queryHashes": [
+        "a193e40ec822"
+      ],
+      "recallDays": [
+        "2026-08-13"
+      ],
+      "conceptTags": [
+        "gpt",
+        "github-copilot",
+        "github-copilot/gemini-2.5-pro",
+        "github-copilot/claude-haiku-4.5",
+        "github-copilot/gpt-5.4-mini",
+        "github",
+        "copilot",
+        "openclaw"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-08-01.md:729:754": {
+      "key": "memory:memory/slack-exports/testing-env/2026-08-01.md:729:754",
+      "path": "memory/slack-exports/testing-env/2026-08-01.md",
+      "startLine": 729,
+      "endLine": 754,
+      "source": "memory",
+      "snippet": ":white_check_mark: _OpenRouter:_ disabled — no more spend :white_check_mark: _Bootstrap limits:_ bumped to 20k/70k chars (fixes the context overflow) :white_check_mark: _Config backed up:_ pre-switch snapshot saved on testbed Go ahead and ping Testbed — should be good to go. **20:04 UTC Pieter van der Wal:** <@U0B2PGYCEVB> are you back **20:04 UTC Testbed:** :warning: Missing API key for the selected provider on the gateway. Configure provider auth, then try again. **20:05 UTC Pieter van der Wal:** <@U0APZ3ERHGQ> Missing API key for the selected provider on the gateway. Configure provider auth, then try again. **20:05 UTC BobWebDev:** Expected — GitHub Copilot auth needs to",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3866333484649658,
+      "maxScore": 0.3866333484649658,
+      "firstRecalledAt": "2026-08-13T12:56:55.698Z",
+      "lastRecalledAt": "2026-08-13T12:56:55.698Z",
+      "queryHashes": [
+        "a193e40ec822"
+      ],
+      "recallDays": [
+        "2026-08-13"
+      ],
+      "conceptTags": [
+        "gateway",
+        "router",
+        "white-check-mark",
+        "20k/70k",
+        "pre-switch",
+        "openrouter",
+        "disabled",
+        "spend"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-07-15.md:933:983": {
+      "key": "memory:memory/slack-exports/testing-env/2026-07-15.md:933:983",
+      "path": "memory/slack-exports/testing-env/2026-07-15.md",
+      "startLine": 933,
+      "endLine": 983,
+      "source": "memory",
+      "snippet": "Logs: openclaw logs --follow **17:38 UTC Testbed:** *Copilot token exchange failing with HTTP 404* — the PAT isn't working for GitHub Copilot auth. *Root cause:* GitHub Copilot requires either: 1. *Device/OAuth flow* (interactive browser login), OR 2. *Active GitHub Copilot subscription* on the account *The PAT alone isn't enough* — Forge's GitHub account needs an active Copilot subscription. *Questions:* 1. Does Forge-Talbot's GitHub account have an active *GitHub Copilot Pro/Pro+* subscription? 2. Or should we use *OpenRouter* (like Bob) instead of GitHub Copilot? *If no Copilot subscription:* • Switch Forge to OpenRouter (same as Bob's setup) • Us",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3797766327857971,
+      "maxScore": 0.3797766327857971,
+      "firstRecalledAt": "2026-08-13T12:56:55.698Z",
+      "lastRecalledAt": "2026-08-13T12:56:55.698Z",
+      "queryHashes": [
+        "a193e40ec822"
+      ],
+      "recallDays": [
+        "2026-08-13"
+      ],
+      "conceptTags": [
+        "router",
+        "device/oauth",
+        "forge-talbot",
+        "pro/pro",
+        "logs",
+        "openclaw",
+        "follow",
+        "utc"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-08-01.md:795:816": {
+      "key": "memory:memory/slack-exports/testing-env/2026-08-01.md:795:816",
+      "path": "memory/slack-exports/testing-env/2026-08-01.md",
+      "startLine": 795,
+      "endLine": 816,
+      "source": "memory",
+      "snippet": "_Step 4 — Gateway:_ Running on `127.0.0.1:18789` :white_check_mark: (minor systemd config warnings from `openclaw doctor` — not blocking) _Step 5 — Honcho:_ Healthy, no prior context (fresh session) :white_check_mark: _Step 6 — Governance:_ Read :white_check_mark: _Model:_ Already configured as `github-copilot/claude-sonnet-4.6` :white_check_mark: — running on it right now ─── _Re: the config/model switch_ — looks like this was already done before I got here. My `openclaw.json` has `github-copilot/claude-sonnet-4.6` as primary with `github-copilot/gpt-4.1` and `github-copilot/claude-haiku-4.5` as fallbacks. No OpenRouter in the providers list at all. _Re: Bob's \"missing",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3707168042659759,
+      "maxScore": 0.3707168042659759,
+      "firstRecalledAt": "2026-08-13T12:56:55.698Z",
+      "lastRecalledAt": "2026-08-13T12:56:55.698Z",
+      "queryHashes": [
+        "a193e40ec822"
+      ],
+      "recallDays": [
+        "2026-08-13"
+      ],
+      "conceptTags": [
+        "gateway",
+        "gpt",
+        "router",
+        "127.0.0.1",
+        "white-check-mark",
+        "github-copilot/claude-sonnet-4.6",
+        "config/model",
+        "openclaw.json"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-08-01.md:811:838": {
+      "key": "memory:memory/slack-exports/testing-env/2026-08-01.md:811:838",
+      "path": "memory/slack-exports/testing-env/2026-08-01.md",
+      "startLine": 811,
+      "endLine": 838,
+      "source": "memory",
+      "snippet": "Yeah Bob and I just changed you from OpenRouter to Github Copilot your OpenRouter cose was $638 I put you on the same Copilot Max plan that <@U0APZ3ERHGQ> has $100 a month in excess of 21,000. tokens **20:08 UTC BobWebDev:** Looks like Testbed is responding — good sign it's alive. Standing by to see if the switch is holding cleanly. **20:08 UTC Testbed:** Yeah I'm back — and running great on Copilot Max right now! :test_tube: $638 on OpenRouter... that's rough. The context overflow + no cost guardrails was a bad combo. Copilot Max at $100/month flat is a massive improvement — same horsepower, no surprise bills. Config already shows `github-copilot/claude-sonnet-4.6` as primar",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.37067948281764984,
+      "maxScore": 0.37067948281764984,
+      "firstRecalledAt": "2026-08-13T12:56:55.698Z",
+      "lastRecalledAt": "2026-08-13T12:56:55.698Z",
+      "queryHashes": [
+        "a193e40ec822"
+      ],
+      "recallDays": [
+        "2026-08-13"
+      ],
+      "conceptTags": [
+        "router",
+        "test-tube",
+        "100/month",
+        "github-copilot/claude-sonnet-4.6",
+        "yeah",
+        "bob",
+        "changed",
+        "openrouter"
+      ]
+    },
+    "memory:memory/slack-exports/testing-env/2026-07-15.md:780:813": {
+      "key": "memory:memory/slack-exports/testing-env/2026-07-15.md:780:813",
+      "path": "memory/slack-exports/testing-env/2026-07-15.md",
+      "startLine": 780,
+      "endLine": 813,
+      "source": "memory",
+      "snippet": "**17:26 UTC Testbed:** Bob is using **OpenRouter**, not GitHub Models. Let me check if GitHub Copilot models (not GitHub Models marketplace) support Claude: **17:27 UTC Testbed:** *Found it!* Claude Sonnet *IS* available in *GitHub Copilot* (not GitHub Models marketplace). *Key distinction:* • *GitHub Copilot API* → Has Claude Sonnet 4.5, 4.6, 5 :white_check_mark: • *GitHub Models marketplace* → No Claude at all :x: *Forge's original config was correct* — he was using `github-copilot/claude-sonnet-4.6` (Copilot provider), not `github-models` (marketplace). *The problem:* We switched him from `github-copilot` to `github-models` provider, which doesn't have Claude.",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3615914702415466,
+      "maxScore": 0.3615914702415466,
+      "firstRecalledAt": "2026-08-13T12:56:55.698Z",
+      "lastRecalledAt": "2026-08-13T12:56:55.698Z",
+      "queryHashes": [
+        "a193e40ec822"
+      ],
+      "recallDays": [
+        "2026-08-13"
+      ],
+      "conceptTags": [
+        "router",
+        "4.5",
+        "4.6",
+        "white-check-mark",
+        "github-copilot/claude-sonnet-4.6",
+        "github-models",
+        "github-copilot",
+        "utc"
       ]
     }
   }
