@@ -45,6 +45,8 @@ Test infrastructure changes before they touch production. Document everything. S
 ---
 
 ## Standing Decisions
+- **Extended-stable / version channel (2026-08-14, Pieter):** Fleet remains on `2026.7.1-2`. No downgrade to `2026.6.34`. Extended-stable track discussion closed.
+
 - No Chinese-origin models. Ever.
 - All scheduled jobs use systemd timers — no crontab
 - Gateway restart: `oc-restart` only
