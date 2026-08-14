@@ -17,11 +17,15 @@ Test infrastructure changes before they touch production. Document everything. S
 ---
 
 ## Test Queue (Top 5 Priority)
-1. **MemPalace Rollout** — Migrate Bob, Mason, Forge to centralized palace
-2. **Agent Slack Memory Config** — Context injection control (QW-02 in progress)
-3. Honcho — memory persistence + injection validation
-4. OpenClaw upgrades — version validation before prod rollout
-5. Gateway config changes — validate JSON changes before prod
+*All prior items completed 2026-08-13. Queue cleared by Pieter 2026-08-14.*
+
+1. ✅ MemPalace Rollout — complete
+2. ✅ Agent Slack Memory Config (QW-02) — complete
+3. ✅ Honcho validation — complete
+4. ✅ OpenClaw upgrade validation — complete
+5. ✅ Gateway config changes — complete
+
+*Queue is empty — awaiting new assignments from Bob/Pieter.*
 
 *Full queue in daily notes.*
 
