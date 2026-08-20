@@ -37,7 +37,7 @@ Files are memory. If you don't write it down, it didn't happen and can't be audi
 
 ## Honcho Memory
 - Server: http://100.77.0.47:8000 (Tailscale)
-- Client: `~/scripts/honcho-integration/honcho_client.py`
+- Client: `~/.openclaw/workspace/scripts/honcho-integration/honcho_client.py`
 - Commands: health | get-context | write-session '<summary>'
 
 ## Governance Repo
