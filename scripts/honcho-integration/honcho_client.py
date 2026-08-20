@@ -72,7 +72,7 @@ def get_context():
         
         # SDK v2.2.0: search for existing sessions for this peer
         sessions = list(client.sessions())
-        peer_sessions = [s for s in sessions if peer_name.lower() in (s.name or "").lower()]
+        peer_sessions = [s for s in sessions if peer_name.lower() in (s.id or "").lower()]
         
         has_context = len(peer_sessions) > 0
         
