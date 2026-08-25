@@ -45,6 +45,7 @@ Test infrastructure changes before they touch production. Document everything. S
 ---
 
 ## Standing Decisions
+- **NEVER REBOOT A SERVER (2026-08-25, Pieter):** Do not reboot any server after hardening or changes without explicit go-ahead from Pieter or Bob. Apply changes, confirm they work, stop. Ask before rebooting. No exceptions. This caused 4 servers to lock out.
 - **Extended-stable / version channel (2026-08-14, Pieter):** Fleet remains on `2026.7.1-2`. No downgrade to `2026.6.34`. Extended-stable track discussion closed.
 
 - No Chinese-origin models. Ever.
